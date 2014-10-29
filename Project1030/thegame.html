@@ -12,7 +12,7 @@
 	</head>
 
 	<body>
-		<section class ="container">
+		<div class ="container-fluid">
 			<div class = "page-header">
 				<h3>
 					<nav class="navbar navbar-default" role="navigation">
@@ -25,7 +25,7 @@
 							        <span class="icon-bar"></span>
 							        <span class="icon-bar"></span>
 					      		</button>
-					     		<a class="navbar-brand" href="#">Sweg</a>
+					     		<a class="navbar-brand" href="#">The Sweg Game</a>
 					    	</div>
 
 					    <!-- Collect the nav links, forms, and other content for toggling -->
@@ -70,12 +70,6 @@
 
 
 			<div class="row">
-			  	<div class="col-md-8 col-md-offset-2">
-			  		<h1>Sweg Game</h1>
-			  	</div>
-			</div>
-
-			<div class="row">
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs" role="tablist">
 				  <li class="active"><a href="#home" role="tab" data-toggle="tab">Home</a></li>
@@ -92,31 +86,89 @@
 						  		<div class = "row">
 									<div class="col-md-1">
 										<button type="button" class="btn btn-default btn-sm">New Game
-											<span class="glyphicon glyphicon-plus">
+											<span class="glyphicon glyphicon-plus"></span>
 										</button>
 									</div><!-- ends first column -->
 								</div>
 								<div class = "row">
 									<div class="col-md-1">
 										<button type="button" class="btn btn-default btn-sm">Load Game
-											<span class="glyphicon glyphicon-plus">
+											<span class="glyphicon glyphicon-plus"></span>
 										</button>
 									</div><!-- ends first column -->
 								</div>
 								<div class = "row">
 									<div class="col-md-1">
 										<button type="button" class="btn btn-default btn-sm">Meowtiplayer
-											<span class="glyphicon glyphicon-plus">
+											<span class="glyphicon glyphicon-plus"></span>
 										</button>
 									</div><!-- ends first column -->
 								</div>						
 							</div>
 						</div>
 					</div>
-					<div class="tab-pane" id="profile">here there will be a table on the left side with characters list and an option to create a character or edit a character
+					<div class="tab-pane" id="profile">
 				  		<div class = "jumbotron">
 							<div class ="container">
-								<!-- here there will be a table on the left side with characters list and an option to create a character or edit a character -->
+								
+								<div class ="row"><!--row of character buttons -->
+									<div class = "col-md-1"><!--begins load character button column -->
+										<button type="button" class="btn btn-default btn-xs">Select Character
+											<span class="glyphicon glyphicon-user"></span>
+										</button>
+									</div> <!--ends load character button column -->
+					
+								</div> <!-- ends row of buttons -->
+								<div class="row">
+									<div class="col-md-2"><!--column that has table of characters -->
+										<h4>Characters</h4>
+										<table class="table table-striped table-hover">
+											<tbody></tbody>
+										</table>
+									</div>
+									<div class= "col-md-9"><!--column of the gameplay screen -->
+										<h4>Edit Character</h4>
+										<img src="http://2.bp.blogspot.com/-36qKWMaDXwQ/U7Q4pfiv9PI/AAAAAAAAAFg/aolCUCJZpgQ/s1600/image_40828_full.jpg" class="img-responsive" alt="Responsive image">
+									</div><!--ends column of gameplay screen -->
+									<div class = "col-md-1"> <!--begin new user column -->
+										<!-- Single button -->
+										<div class="btn-group">
+											<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+												<span class="glyphicon glyphicon-plus"></span>
+												Create Character
+												<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu" role="menu">
+												<div class = "container-fluid">
+													<li>
+														<form role="form">
+															<div class="form-group">
+																<label for="characterCreationName">Character Name:</label>
+																<input type="text" class="form-control" id="createCharacterName">
+															</div>
+															<div class="form-group">
+																<label for="characterCreationClass">Class Type:</label>
+																<input type="text" class="form-control" id="createCharacteClass">
+															</div>
+															<div class="form-group">
+																<label for="characterCreationLevel">Level:</label>
+																<input type="text" class="form-control" id="createCharacterLevel">
+															</div>
+
+															<button type="button" class="btn btn-danger btn-sm">
+																<span class="glyphicon glyphicon-remove-circle"></span>
+															</button>
+															<button type="submit" class="btn btn-primary btn-sm">
+																<span class="glyphicon glyphicon-ok-circle"></span>
+															</button>
+															
+														</form>
+													</li>
+												</div>
+											</ul>
+										</div>
+									</div><!--ends new user column -->
+								</div><!--ends row of table and screen -->
 							</div>
 						</div>
 					</div>
@@ -229,7 +281,7 @@
 				</div><!-- end modal -->
 
 			</div><!--ends row -->
-		</section>
+		</div>
 
 		<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 		<!-- Latest compiled and minified JavaScript -->
