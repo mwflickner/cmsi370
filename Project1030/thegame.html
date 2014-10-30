@@ -109,28 +109,30 @@
 					</div>
 					<div class="tab-pane" id="profile">
 				  		<div class = "jumbotron">
-							<div class ="container">
+							<div class ="container-fluid">
 								
 								<div class ="row"><!--row of character buttons -->
 									<div class = "col-md-1"><!--begins load character button column -->
-										<button type="button" class="btn btn-default btn-xs">Select Character
+										<button type="button" class="btn btn-default btn-xs" onclick="getCharacters()">Select Character
 											<span class="glyphicon glyphicon-user"></span>
 										</button>
 									</div> <!--ends load character button column -->
 					
 								</div> <!-- ends row of buttons -->
 								<div class="row">
-									<div class="col-md-2"><!--column that has table of characters -->
+									<div class="col-md-5"><!--column that has table of characters -->
 										<h4>Characters</h4>
-										<table class="table table-striped table-hover">
-											<tbody></tbody>
-										</table>
+										<div style="height: 400px; width: 500px; overflow:auto;">
+											<table class="table table-striped table-hover">
+												<tbody></tbody>
+											</table>
+										</div>
 									</div>
-									<div class= "col-md-9"><!--column of the gameplay screen -->
+									<div class= "col-md-4"><!--column of the gameplay screen -->
 										<h4>Edit Character</h4>
 										<img src="http://2.bp.blogspot.com/-36qKWMaDXwQ/U7Q4pfiv9PI/AAAAAAAAAFg/aolCUCJZpgQ/s1600/image_40828_full.jpg" class="img-responsive" alt="Responsive image">
 									</div><!--ends column of gameplay screen -->
-									<div class = "col-md-1"> <!--begin new user column -->
+									<div class = "col-md-1 col-md-offset-1"> <!--begin new user column -->
 										<!-- Single button -->
 										<div class="btn-group">
 											<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -283,6 +285,7 @@
 			</div><!--ends row -->
 		</div>
 
+		<script src = "theGameScript.js"></script>
 		<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
