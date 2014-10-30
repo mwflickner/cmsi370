@@ -86,7 +86,7 @@
                 </ul>
                 <!-- Tab panes -->
                 <section class="tab-content">
-                    <div class="tab-pane active" id="home">home
+                    <div class="tab-pane active" id="home">
                         <div class="jumbotron">
                             <div class="container-fluid">
                                 <div class="row">
@@ -121,9 +121,13 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     <!--row of character buttons -->
-                                    <div class="col-md-1">
+                                    <div class="col-md-2">
                                         <!--begins load character button column -->
-                                        <button type="button" class="btn btn-default btn-xs" id="getChars" onclick="getCharacters()">Select Character	<span class="glyphicon glyphicon-user"></span>
+                                        <button type="button" class="btn btn-default btn-xs" id="getChars" onclick="getCharacters()">View Characters<span class="glyphicon glyphicon-user"></span>
+
+                                        </button>
+                                        <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#createCharModal">
+                                            Create Character <span class="glyphicon glyphicon-plus"></span>
 
                                         </button>
                                     </div>
@@ -131,7 +135,7 @@
                                 </div>
                                 <!-- ends row of buttons -->
                                 <div class="row">
-                                    <div class="col-md-5">
+                                    <div class="col-md-4">
                                         <!--column that has table of characters -->
                                         	<h4>Characters</h4>
 
@@ -149,26 +153,46 @@
                                             </table>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-5">
                                         <!--column of the gameplay screen -->
-                                        	<h4>Edit Character</h4>
+                                        	<h4 class="charViewer">Character Viewer</h4>
 
                                         <div class="container-fluid">
-                                            <table class="table table-bordered">
-                                                <tbody id="char">
-                                                    <tbody>
-                                            </table>
-                                            <img src="http://2.bp.blogspot.com/-36qKWMaDXwQ/U7Q4pfiv9PI/AAAAAAAAAFg/aolCUCJZpgQ/s1600/image_40828_full.jpg" class="img-responsive" alt="Responsive image">
-                                        </div class>
+                                            <div class= "charView">
+                                                <img src="http://2.bp.blogspot.com/-36qKWMaDXwQ/U7Q4pfiv9PI/AAAAAAAAAFg/aolCUCJZpgQ/s1600/image_40828_full.jpg" class="img-responsive" alt="Responsive image">
+                                                </img>
+                                            </div>
+                                        </div>
                                     </div>
                                     <!--ends column of gameplay screen -->
-                                    <div class="col-md-1 col-md-offset-1">
-                                        <!--begin new user column -->
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createCharModal">Create Character	<span class="glyphicon glyphicon-plus"></span>
-
-                                        </button>
+                                    <div class="col-md-2">
+                                            <h4 class="charViewer">Character:</h4>
+                                        <div class = "container-fluid">
+                                            <div class = "viewCharTable">
+                                                <table class="table table-bordered">
+                                                    <tbody id="char1">
+                                                        <tr>
+                                                            <td class = "labelColumn">Name:</td>
+                                                            <td id="viewCharName"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class = "labelColumn">Class:</td>
+                                                            <td id="viewCharClass"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class = "labelColumn">Gender:</td>
+                                                            <td id="viewCharGender"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class = "labelColumn">Level:</td>
+                                                            <td id="viewCharLevel"></td>
+                                                        <tr id ="editor"></tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <!--ends new user column -->
+                                    
                                 </div>
                                 <!--ends row of table and screen -->
                             </div>
@@ -297,7 +321,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">	<span aria-hidden="true">&times;</span>
-	<span class="sr-only">Close
+	                               <span class="sr-only">Close
 									</span>
 
                             </button>
@@ -331,12 +355,12 @@
                         <section class="container">
                             <div class="row">
                                 <div class="col-md-1 col-md-offset-4">
-                                    <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Cancel<span class="glyphicon glyphicon-remove-circle"></span>
+                                    <button type="button" class="btn btn-danger btn-md" data-dismiss="modal">Cancel <span class="glyphicon glyphicon-remove-circle"></span>
 
                                     </button>
                                 </div>
                                 <div class="col-md-1">
-                                    <button type="submit" class="btn btn-primary btn-lg" data-dismiss="modal" onclick="createCharacter()">Create!<span class="glyphicon glyphicon-ok-circle"></span>
+                                    <button type="button" class="btn btn-primary btn-md" data-dismiss="modal" onclick="createCharacter()">Create! <span class="glyphicon glyphicon-ok-circle"></span>
 
                                     </button>
                                 </div>
@@ -352,6 +376,72 @@
             <!-- end modal dialogue -->
         </div>
         <!-- end modal -->
+
+
+        <!--Modal to Edit Character-->
+            <div class="modal fade" id="editCharModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">   <span aria-hidden="true">&times;</span>
+                                   <span class="sr-only">Close
+                                    </span>
+
+                            </button>
+                                <h4 class="modal-title" id="myModalLabel">Edit Character</h4>
+
+                        </div>
+                        <!--end modal-header -->
+                        <div class="modal-body">
+                            Enter new information for your character.
+                            <form role="form">
+                                <div class="form-group">
+                                    <label for="characterCreationName">Character Name:</label>
+                                    <input type="text" class="form-control" id="editCharacterName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="characterCreationClass">Class Type:</label>
+                                    <input type="text" class="form-control" id="editCharacterClass">
+                                </div>
+                                <div class="form-group">
+                                    <input type="radio" name="sex" value="MALE">Male
+                                    <input type="radio" name="sex" value="FEMALE">Female</div>
+                                <div class="form-group">
+                                    <label for="characterCreationLevel">Level:</label>
+                                    <input type="text" class="form-control" id="editCharacterLevel">
+                                </div>
+                                <div class="form-group">
+                                    <label for="characterCreationMoney">Money:</label>
+                                    <input type="text" class="form-control" id="editCharacterMoney">
+                                </div>
+                        </div>
+                        <!-- ends form -->
+                        <section class="container">
+                            <div class="row">
+                                <div class="col-md-1 col-md-offset-4">
+                                    <button type="button" class="btn btn-danger btn-md" data-dismiss="modal">Cancel <span class="glyphicon glyphicon-remove-circle"></span>
+
+                                    </button>
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="button" class="btn btn-primary btn-md" data-dismiss="modal" onclick="characterEditor()">Save <span class="glyphicon glyphicon-save"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <!-- end modal body -->
+                    <div class="modal-footer"></div>
+                    <!-- end modal footer -->
+                </div>
+                <!-- end modal content -->
+            </div>
+            <!-- end modal dialogue -->
+        </div>
+        <!-- end modal -->
+
+
+
         </div>
         <!--ends row -->
         </div>

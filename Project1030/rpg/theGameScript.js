@@ -65,26 +65,14 @@ var getCharacters = function(){
                     .append($("<td></td>").text(character.classType))
                     .append($("<td></td>").text(character.gender))
                     .append($("<td></td>").text(character.level))
-                    .append($("<td></td>").html("<button type='button' class='btn btn-primary btn-xs' id="+character.id+" onclick='viewCharacter("+character.id+")'>Edit</button>"))
+                    .append($("<td></td>").html("<button type='button' class='btn btn-primary btn-xs' id="+character.id+" onclick='viewCharacter("+character.id+")'>View</button>"))
                     .append($("<td></td>").html("<button type='button' class='btn btn-danger btn-xs' id="+character.id+" onclick='deleteCharacter("+character.id+")'>Delete</button>"));
             }));
         }
     );
 };
 
-var viewCharacter = function(){
-    
-    $.getJSON(
-    "http://lmu-diabolical.appspot.com/characters",
-    function (characterName) {
-        // Do something with the character.
-        $("#char").append(character.map(function (character){
-            return $("tr></tr>")
-                .append($("<td></td").text(character.name))
-        }))
-    }
-);
-};
+
 
 var createCharacter = function (){
     var charName = $("#createCharacterName").val();
@@ -92,6 +80,7 @@ var createCharacter = function (){
     var sex = $("input[name='sex']:checked").val();
     var charLevel = $("#createCharacterLevel").val();
     var charMoney = $("#createCharacterMoney").val();
+    var charLocation;
     $.ajax({
         type: 'POST',
         url: "http://lmu-diabolical.appspot.com/characters",
@@ -110,11 +99,60 @@ var createCharacter = function (){
             console.log("You may access the new character at:" +
                 jqXHR.getResponseHeader("Location"));
             charLocation = jqXHR.getResponseHeader("Location");
-
         }
     });
 
 };
+
+var tempID;
+
+var viewCharacter = function(charID){
+    $.getJSON(
+        "http://lmu-diabolical.appspot.com/characters/"+charID+"",
+        function (character) {
+            $("#viewCharName").text(character.name);
+            $("#viewCharClass").text(character.classType);
+            $("#viewCharGender").text(character.gender);
+            $("#viewCharLevel").text(character.level);
+            $("#editor").html("<button type='button' class='btn btn-default btn-sm' data-toggle='modal' data-target='#editCharModal' id='editThis'>Edit "+character.name+"</button>")
+            tempID=charID;
+
+            // Do something with the character.
+            console.log(character);
+        }
+    );
+}
+
+var editCharacter = function(inputID){
+    var charName = $("#editCharacterName").val();
+    var charClass = $("#editCharacterClass").val();
+    var sex = $("input[name='sex']:checked").val();
+    var charLevel = $("#editCharacterLevel").val();
+    var charMoney = $("#editCharacterMoney").val();
+
+    $.ajax({
+        type: 'PUT',
+        url: "http://lmu-diabolical.appspot.com/characters/"+inputID+"",
+        data: JSON.stringify({
+            id: inputID,
+            name: charName,
+            classType: charClass,
+            gender: sex,
+            level: charLevel,
+            money: charMoney,
+        }),
+        contentType: "application/json",
+        dataType: "json",
+        accept: "application/json",
+        success: function (data, textStatus, jqXHR) {
+            console.log("Done: no news is good news.");
+        }
+    });
+}
+
+var characterEditor = function(){
+    editCharacter(tempID);
+}
 
 
 
