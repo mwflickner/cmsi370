@@ -1,3 +1,23 @@
+var charLocation = "";
+var itemSlots = ["head", "hand", "arms", "legs", "chest", "shoulders", "feet", "weapon1", "weapon2", "knife"];
+
+function itemGen (){
+    var index = Math.floor(Math.random()* itemSlots.length);
+    return itemSlots[index];
+}
+
+function levelGen (){
+    return Math.floor(Math.random()* 100) + 1;
+}
+
+var loginSuccess = function(){
+    $(document).ready(function(){
+        $("#loginM").click(function(){
+            $("#topMenuLogin").hide();
+        });
+    });
+}
+
 var getCharacters = function (){
 
     $.getJSON(
@@ -9,15 +29,17 @@ var getCharacters = function (){
                     .append($("<td></td>").text(character.classType))
                     .append($("<td></td>").text(character.gender))
                     .append($("<td></td>").text(character.level))
-                    .append($("<td></td>").html("<button type='button' class='btn btn-primary btn-xs' id="+character.name+" onclick='viewCharacter()'>View</button>"));
+                    .append($("<td></td>").html("<button type='button' class='btn btn-primary btn-xs' id="+character.name+" onclick='viewCharacter()'>View</button>"))
+                    .append($("<td></td>").html("<button type='button' class='btn btn-danger btn-xs' id="+character.name+" onclick='deleteCharacter()'>Delete</button>"));
             }));
         }
     );
 }
 
 var viewCharacter = function(){
+    
     $.getJSON(
-    "http://lmu-diabolical.appspot.com/characters/5629499534213120",
+    "http://lmu-diabolical.appspot.com/characters/"+id,
     function (characterName) {
         // Do something with the character.
         $("#char").append(character.map(function (character){
@@ -31,7 +53,7 @@ var viewCharacter = function(){
 var createCharacter = function (){
     var charName = $("#createCharacterName").val();
     var charClass = $("#createCharacterClass").val();
-    var sex = $("input:radio[name=sex]").val();
+    var sex = $("input:[type='radio'][name='sex']:checked").val();
     var charLevel = $("#createCharacterLevel").val();
     var charMoney = $("#createCharacterMoney").val();
     $.ajax({
@@ -51,6 +73,7 @@ var createCharacter = function (){
             // The new character can be accessed from the Location header.
             console.log("You may access the new character at:" +
                 jqXHR.getResponseHeader("Location"));
+            charLocation = jqXHR.getResponseHeader("Location");
         }
     });
 
@@ -66,3 +89,40 @@ var deleteCharacter = function (){
         }
     });
 }
+
+
+var randomItem = function(){
+    var itemLocation = itemGen();
+    var theLevel = levelGen();
+    $.getJSON(
+    "http://lmu-diabolical.appspot.com/items/spawn",
+    {
+        level: theLevel,
+        slot: itemLocation,
+    },
+    function (item) {
+       /* $("#itemTable").append(item.map(function (item) {
+                return $("<tr></tr>")
+                    .append($("<td></td>").text(item.absorption))
+                    .append($("<td></td>").text(item.atkspeed))
+                    .append($("<td></td>").text(item.blockchance))
+                    .append($("<td></td>").text(item.level))
+                    .append($("<td></td>").text(item.critchance))
+                    .append($("<td></td>").text(item.defense))
+                    .append($("<td></td>").text(item.maxdamage))
+                    .append($("<td></td>").text(item.mindamage))
+                    .append($("<td></td>").text(item.name))
+                    .append($("<td></td>").text(item.slot))
+
+            }));
+        */
+        // Mmmmm, new item.
+        console.log(item);
+
+    }
+);
+}
+
+
+
+
