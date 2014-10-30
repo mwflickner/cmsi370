@@ -4,11 +4,11 @@ var itemSlots = ["head", "hand", "arms", "legs", "chest", "shoulders", "feet", "
 function itemGen (){
     var index = Math.floor(Math.random()* itemSlots.length);
     return itemSlots[index];
-}
+};
 
 function levelGen (){
     return Math.floor(Math.random()* 100) + 1;
-}
+};
 
 var loginSuccess = function(){
     $(document).ready(function(){
@@ -16,10 +16,36 @@ var loginSuccess = function(){
             $("#topMenuLogin").hide();
         });
     });
-}
+};
 
-var getCharacters = function (){
+var accountCreateSuccess = function(){
+    $(document).ready(function(){
+        $("#signUp").click(function(){
+            $("#topMenuCreate").hide();
+        });
+    });
+};
 
+var logoutSuccess = function(){
+    $(document).ready(function(){
+        $("#logout").click(function(){
+            $("#topMenuLogin").show()
+            $("#topMenuCreate").show()
+        })
+    })
+};
+
+function clearCharTable(){
+    $(document).ready(function(){
+        $("#getChars").click(function(){
+            $("#charTable").empty();
+        })
+            
+    })
+};
+
+var getCharacters = function(){
+    clearCharTable();
     $.getJSON(
         "http://lmu-diabolical.appspot.com/characters",
         function (characters) {
@@ -29,17 +55,17 @@ var getCharacters = function (){
                     .append($("<td></td>").text(character.classType))
                     .append($("<td></td>").text(character.gender))
                     .append($("<td></td>").text(character.level))
-                    .append($("<td></td>").html("<button type='button' class='btn btn-primary btn-xs' id="+character.name+" onclick='viewCharacter()'>View</button>"))
-                    .append($("<td></td>").html("<button type='button' class='btn btn-danger btn-xs' id="+character.name+" onclick='deleteCharacter()'>Delete</button>"));
+                    .append($("<td></td>").html("<button type='button' class='btn btn-primary btn-xs' id="+character.id+" onclick='viewCharacter("+character.id+")'>Edit</button>"))
+                    .append($("<td></td>").html("<button type='button' class='btn btn-danger btn-xs' id="+character.id+" onclick='deleteCharacter("+character.id+")'>Delete</button>"));
             }));
         }
     );
-}
+};
 
 var viewCharacter = function(){
     
     $.getJSON(
-    "http://lmu-diabolical.appspot.com/characters/"+id,
+    "http://lmu-diabolical.appspot.com/characters",
     function (characterName) {
         // Do something with the character.
         $("#char").append(character.map(function (character){
@@ -48,12 +74,12 @@ var viewCharacter = function(){
         }))
     }
 );
-}
+};
 
 var createCharacter = function (){
     var charName = $("#createCharacterName").val();
     var charClass = $("#createCharacterClass").val();
-    var sex = $("input:[type='radio'][name='sex']:checked").val();
+    var sex = $("input[name='sex']:checked").val();
     var charLevel = $("#createCharacterLevel").val();
     var charMoney = $("#createCharacterMoney").val();
     $.ajax({
@@ -74,21 +100,23 @@ var createCharacter = function (){
             console.log("You may access the new character at:" +
                 jqXHR.getResponseHeader("Location"));
             charLocation = jqXHR.getResponseHeader("Location");
+
         }
     });
 
-}
+};
 
-var deleteCharacter = function (){
 
+
+var deleteCharacter = function (charID){
     $.ajax({
         type: 'DELETE',
-        url: "http://lmu-diabolical.appspot.com/characters/5891733057437696",
+        url: "http://lmu-diabolical.appspot.com/characters/"+charID+"",
         success: function (data, textStatus, jqXHR) {
             console.log("Gone baby gone.");
         }
     });
-}
+};
 
 
 var randomItem = function(){
@@ -121,7 +149,7 @@ var randomItem = function(){
 
     }
 );
-}
+};
 
 
 

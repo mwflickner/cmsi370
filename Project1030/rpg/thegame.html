@@ -57,7 +57,7 @@
 						    	</li>
 							     <li>
 							        <a href="#">
-								        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signUpModal">Create Account
+								        <button type="button" id="topMenuCreate" class="btn btn-primary" data-toggle="modal" data-target="#signUpModal">Create Account
 										</button>
 							       	</a>
                                  </li>     
@@ -123,7 +123,7 @@
                                     <!--row of character buttons -->
                                     <div class="col-md-1">
                                         <!--begins load character button column -->
-                                        <button type="button" class="btn btn-default btn-xs" onclick="getCharacters()">Select Character	<span class="glyphicon glyphicon-user"></span>
+                                        <button type="button" class="btn btn-default btn-xs" id="getChars" onclick="getCharacters()">Select Character	<span class="glyphicon glyphicon-user"></span>
 
                                         </button>
                                     </div>
@@ -271,7 +271,7 @@
                                     </div>
                                     <!--ends column -->
                                     <div class="col-md-1">
-                                        <button type="button" class="btn btn-success" data-dismiss="modal">Sign Up!</button>
+                                        <button type="button" id = "signUp" class="btn btn-success" data-dismiss="modal">Sign Up!</button>
                                     </div>
                                     <!-- ends column-->
                                 </div>
@@ -331,12 +331,12 @@
                         <section class="container">
                             <div class="row">
                                 <div class="col-md-1 col-md-offset-4">
-                                    <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">	<span class="glyphicon glyphicon-remove-circle"></span>
+                                    <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Cancel<span class="glyphicon glyphicon-remove-circle"></span>
 
                                     </button>
                                 </div>
                                 <div class="col-md-1">
-                                    <button type="submit" class="btn btn-primary btn-lg" data-dismiss="modal" onclick="createCharacter()">	<span class="glyphicon glyphicon-ok-circle"></span>
+                                    <button type="submit" class="btn btn-primary btn-lg" data-dismiss="modal" onclick="createCharacter()">Create!<span class="glyphicon glyphicon-ok-circle"></span>
 
                                     </button>
                                 </div>
