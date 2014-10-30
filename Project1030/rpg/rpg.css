@@ -19,3 +19,8 @@ div.charView{
 thead.charStats{
 	font-weight: bold;
 }
+
+section.tab-content{
+	border-style: solid;
+	border-width: 3px;
+}

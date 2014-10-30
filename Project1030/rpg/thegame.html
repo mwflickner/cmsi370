@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
     </head>
     
-    <body>
+    <body onload = "pageStart()">
         <div class="container-fluid">
             <div class="page-header">
                 	<h3>
@@ -90,17 +90,21 @@
                         <div class="jumbotron">
                             <div class="container-fluid">
                                 <div class="row">
-                                    <div class="col-md-1">
-                                        <button type="button" class="btn btn-default btn-sm">New Game	<span class="glyphicon glyphicon-plus"></span>
+                                    <div class="col-md-2">
+                                        <button type="button" id = "playBut" onclick="play()" class="btn btn-primary btn-md">Play <span class="glyphicon glyphicon-play"></span>
 
                                         </button>
                                     </div>
                                     <!-- ends first column -->
                                     <div class="col-md-8">
-                                        <img src="http://www.fullprogramlarindir.com/wp-content/uploads/2013/12/assassins-creed-4-black-flag-pirate-naval-exploration-gameplay.jpg" class="img-responsive" alt="Responsive image">
+                                        <div class= "jumbotron">
+                                            <div class="container-fluid">
+                                                <img src="http://www.fullprogramlarindir.com/wp-content/uploads/2013/12/assassins-creed-4-black-flag-pirate-naval-exploration-gameplay.jpg" class="img-responsive" alt="Responsive image" id="mainScreen">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-1">
-                                        <button type = "button" class="btn btn-default btn-sm" onclick="randomItem()">Item Spawn</button>
+                                    <div class="col-md-2">
+                                        <button type = "button" class="btn btn-info btn-sm" onclick="randomItem()">Item Spawn</button>
                                         <div class = "itemTable">
                                             <table class = "table-striped table-bordered table-hover table-condensed">
                                                 <thead>
@@ -123,7 +127,7 @@
                                     <!--row of character buttons -->
                                     <div class="col-md-2">
                                         <!--begins load character button column -->
-                                        <button type="button" class="btn btn-default btn-xs" id="getChars" onclick="getCharacters()">View Characters<span class="glyphicon glyphicon-user"></span>
+                                        <button type="button" class="btn btn-default btn-xs" id="getChars" onclick="getCharacters()">Refresh List <span class="glyphicon glyphicon-user"></span>
 
                                         </button>
                                         <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#createCharModal">
@@ -198,9 +202,30 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane" id="messages">messages</div>
-                    <div class="tab-pane" id="settings">settings</div>
-                </section </div>
+                    <div class="tab-pane" id="messages">Messages are not currently available</div>
+                    <div class="tab-pane" id="settings">
+                        <div class = "row">
+                            <div class="col-md-2 col-md-offset-1">
+                                <h4>About</h4>
+                                <p id = "about">
+                                    Welcome to Sweg Game. Here you can find any information about everything.<br>
+                                    Step 1: Login or Create an Account<br><br>
+                                    Step 2: Hit Play!<br><br>
+                                    Use the Navigation Tab to navigate from the Home Screen to your Profile, Messages, and Settings<br><br>
+                                    The Home Tab is used for the main screen and spawning a random item.<br><br>
+                                    The Profile Tab is used to Create, Select, View, Edit and Delete Characters<br><br>
+                                    The Setting Tab is where you can find information and set any settings within the game.<br><br>
+                                    Notes:<br>
+                                    Message functionality is not currently supported.<br><br>
+                                    Known Bugs:<br>
+                                    Takes two clicks to activate a button related function, not one.<br><br>
+
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
                 <!-- ends row -->
 
 
@@ -236,21 +261,25 @@
                                             <input type="password" class="form-control" id="loginPassword" placeholder="Password">
                                         </div>
                                         <!--ends form group -->
-                                </div>
-                                <!-- ends form -->
-                                <section class="container">
-                                    <div class="row">
-                                        <div class="col-md-1 col-md-offset-4">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                        </div>
-                                        <div class="col-md-1">
-                                            <button type="button" id="loginM" class="btn btn-success" data-dismiss="modal" onclick="loginSuccess()">Login</button>
-                                        </div>
+                                        <section class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-md-2 col-md-offset-4">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <button type="submit" id="loginM" class="btn btn-success" data-dismiss="modal" onclick="loginSuccess()">Login</button>
+                                                </div>
+                                            </div>
+                                        </section>
                                     </div>
-                                </section>
-                            </div>
+                                <!-- ends form -->
+                                
+                                </div>
                             <!-- end modal body -->
-                            <div class="modal-footer"></div>
+                            <div class="modal-footer">
+
+
+                            </div>
                             <!-- end modal footer -->
                         </div>
                         <!-- end modal content -->
@@ -286,21 +315,22 @@
                                         <input type="password" class="form-control" id="inputPassword" placeholder="Password">
                                     </div>
                                     <!--ends form group -->
+                                <section class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-2 col-md-offset-4">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                        </div>
+                                        <!--ends column -->
+                                        <div class="col-md-2">
+                                            <button type="submit" id = "signUpM" onclick="accountCreateSuccess()" class="btn btn-success" data-dismiss="modal">Sign Up!</button>
+                                        </div>
+                                        <!-- ends column-->
+                                    </div>
+                                    <!--ends row -->
+                                </section>
                             </div>
                             <!-- ends form -->
-                            <section class="container">
-                                <div class="row">
-                                    <div class="col-md-1 col-md-offset-4">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                    </div>
-                                    <!--ends column -->
-                                    <div class="col-md-1">
-                                        <button type="button" id = "signUpM" onclick="accountCreateSuccess()" class="btn btn-success" data-dismiss="modal">Sign Up!</button>
-                                    </div>
-                                    <!-- ends column-->
-                                </div>
-                                <!--ends row -->
-                            </section>
+                                
                         </div>
                         <!-- end modal body -->
                         <div class="modal-footer"></div>
@@ -350,22 +380,24 @@
                                     <label for="characterCreationMoney">Money:</label>
                                     <input type="text" class="form-control" id="createCharacterMoney">
                                 </div>
-                        </div>
-                        <!-- ends form -->
-                        <section class="container">
-                            <div class="row">
-                                <div class="col-md-1 col-md-offset-4">
-                                    <button type="button" class="btn btn-danger btn-md" data-dismiss="modal">Cancel <span class="glyphicon glyphicon-remove-circle"></span>
 
-                                    </button>
-                                </div>
-                                <div class="col-md-1">
-                                    <button type="button" class="btn btn-primary btn-md" data-dismiss="modal" onclick="createCharacter()">Create! <span class="glyphicon glyphicon-ok-circle"></span>
+                                <section class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-2 col-md-offset-4">
+                                            <button type="button" class="btn btn-danger btn-md" data-dismiss="modal">Cancel <span class="glyphicon glyphicon-remove-circle"></span>
 
-                                    </button>
-                                </div>
+                                            </button>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="submit" class="btn btn-primary btn-md" data-dismiss="modal" onclick="createCharacter()">Create! <span class="glyphicon glyphicon-ok-circle"></span>
+
+                                            </button>
+                                        </div>
+                                    </div>
+                                </section>
                             </div>
-                        </section>
+                        <!-- ends form -->
+                            
                     </div>
                     <!-- end modal body -->
                     <div class="modal-footer"></div>
@@ -414,21 +446,22 @@
                                     <label for="characterCreationMoney">Money:</label>
                                     <input type="text" class="form-control" id="editCharacterMoney">
                                 </div>
+                                <section class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-2 col-md-offset-4">
+                                            <button type="button" class="btn btn-danger btn-md" data-dismiss="modal">Cancel <span class="glyphicon glyphicon-remove-circle"></span>
+
+                                            </button>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="submit" class="btn btn-primary btn-md" data-dismiss="modal" onclick="characterEditor()">Save <span class="glyphicon glyphicon-save"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </section>
                         </div>
                         <!-- ends form -->
-                        <section class="container">
-                            <div class="row">
-                                <div class="col-md-1 col-md-offset-4">
-                                    <button type="button" class="btn btn-danger btn-md" data-dismiss="modal">Cancel <span class="glyphicon glyphicon-remove-circle"></span>
-
-                                    </button>
-                                </div>
-                                <div class="col-md-1">
-                                    <button type="button" class="btn btn-primary btn-md" data-dismiss="modal" onclick="characterEditor()">Save <span class="glyphicon glyphicon-save"></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </section>
+                        
                     </div>
                     <!-- end modal body -->
                     <div class="modal-footer"></div>
