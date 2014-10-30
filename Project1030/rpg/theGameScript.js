@@ -11,25 +11,35 @@ function levelGen (){
 };
 
 var loginSuccess = function(){
-    $(document).ready(function(){
         $("#loginM").click(function(){
-            $("#topMenuLogin").hide();
+            $("#topMenuLogin").text("Logout");
+            $("#topMenuCreate").hide();
+            $("#topMenuLogin").attr({
+                "onclick": "logoutSuccess()",
+                "data-toggle": ""
+            });
         });
-    });
 };
 
 var accountCreateSuccess = function(){
-    $(document).ready(function(){
-        $("#signUp").click(function(){
+        $("#signUpM").click(function(){
             $("#topMenuCreate").hide();
+            $("#topMenuLogin").text("Logout");
+            $("#topMenuLogin").attr({
+                "onclick": "logoutSuccess()",
+                "data-toggle": ""
+            });
         });
-    });
 };
 
 var logoutSuccess = function(){
     $(document).ready(function(){
-        $("#logout").click(function(){
-            $("#topMenuLogin").show()
+        $("#topMenuLogin").click(function(){
+            $("#topMenuLogin").text("Login")
+            $("#topMenuLogin").attr({
+                "onclick": "loginSucess()",
+                "data-toggle": "modal"
+            })
             $("#topMenuCreate").show()
         })
     })
