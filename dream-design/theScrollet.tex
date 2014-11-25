@@ -28,12 +28,6 @@ Your abstract.
 \section{Introduction}
 Historically, a tablet is a chunk of stone of clay that ancient cultures used to write on. They were large, clunky, and hard to carry. In addition they easily cracked and broken. Modern day electronic tablets obviously are not nearly as chunky and heavy but many of the characteristics of ancient tablets still hold true to modern day ones. Both ancient and modern tablets are fixed in size and they are not the easiest to carry. And they crack and break very easily, especially when dropped. Yet for some reason, tablets these days are all the rage. Apple iPad, the Google Nexus, the Samsung Galaxy Tab, the Windows Surface are all very popular buys as they aim to find the middle ground between a mobile phone and a laptop. But tablets these days just don't enough. Their design has failed to provide a successful model to find that portable device that is the middle ground between a computer and a mobile phone. The tablet's time is done. Ancient tablets were eventually replaced with the far more efficient paper. Paper took on many various forms but one of the most efficient was the scroll. And that is were we come in. It's time to replace the modern day computing tablet with the next step in it's evolution. It is time for the modern computer scroll. The following is our proposed design for a computing scroll, the Scrollet.
 
-\section{The System of Use}
-\label{sec:system}
-The Scrollet is designed to be that middle ground that tablets just never could be. Compressible, efficient, flexible and multifaceted the Scrollet can be used for anything. It can stand upright on by itself, hang from a wall, or tilt at an angle with a kickstand. It can run any touch based operating system. It has stylus and bluetooth keyboard capability. In addition it has everything a tablet has such as front and rear-facing cameras, USB port, speakers, accelerometers and more. The innovation comes with the flexible screen rolls up into the sides of the scrolls.
-
-\subsection{Potential Usability Issues}
-There is no such thing as a perfect product and the Scrollet definitely has some usability issues. The biggest of these is how a user touch input would work on such a thin, flexible screen. If the user input is too hard the screen bend. Screen stability and integrity are a huge concern. Just because the screen is flexible does not mean it is unbreakable. The screen could very easily potentially rip or tear. Another usability issue is battery life. The Scrollet is a powerful device and it is uncertain how long it will last when portable. 
 
 \section{Top Level Design}
 \subsection{Hardware Overview}
@@ -43,7 +37,16 @@ The Scrollet, naturally, is designed like to work like a scroll. It has two "Gra
 The Grabbles are where mostly everything occurs in the Scrollet. Their shape is parabolic but they are cylindrical in nature. Inside the Grabbles are the processor, memory, storage, graphics card, battery, speakers, accelerometers, compass, GPS, light sensors, WiFi antenna, Bluetooth chip. In addition, the inside of the grabbles will have some protective cushioning to better protect the screen and other critical components. On the exterior of the Grabbles are the HDMI input, Mini-Display input, headphone port, stylus slot, power button, camera, a USB 3.0 port for additional storage, a USB Micro port to be used for charging as well as syncing data to computers. On the backside of the Grabbles, there is an adjustable kickstand that can be used to prop up the Scrollet during use as well as two mounting holes that would allow for the Scrollet to be mounted on a wall.
 
 \subsection{The Screen}
-The screen is thin and flexible. It has the potential to be either transparent or non-transparent based on the user's choosing. It is touch sensitive and touch is the primary way users input information.
+The screen is what makes the Scrollet stand out. It is thin and flexible and has the ability to roll up and roll out. The ability of the screen to do this comes from advances in OLED screens. 
+
+\subsubsection{Some Information About OLED Displays}
+OLED stands for "Organic light-emitting diode". \cite{Lin} OLED screens are considered to be a promising alternative to modern LCD displays on mobile devices. \cite{Lin} OLED's provide brighter colors, wider viewing angles and image response times. However OLED displays are self-emmisive and therefore highly dependent on the image content. \cite{Lin}
+
+\subsubsection{Innovation in OLED's}
+The technology made possible for the Scrollet has a lot to with recent developments by LG. LG Display recently announced their 18-inch flexible OLED panel as well as a 18-inch transparent OLED panel. \cite{LG} The resolution is pretty good, getting 1200 x 810 with nearly 1 million mega-pixels. \cite{LG} But more importantly the panel can be rolled up to a radius of 3 cm (diameter of 6 cm) with affecting the functionality of the display. \cite{LG} They achieved flexibility and thinness by making the displays out of a polyimide film instead of conventional plastic. \cite{LG}
+
+\subsubsection{The Screen of the Scrollet}
+The Scrollet screen is designed based on this pioneering innovation in displays from LG. The Scrollet combines this new technology with current mobile device touch screen technology and accelerometers to create essentially a working electronic scroll.
 
 \subsection{Software Overview}
 The root operating system of the Scrollet is a very simple touch-based operating system that offers very few options to the user. Its main purpose to serve as essentially a boot menu for the virtual guest systems that are run inside the root. That being said the root operating system has essentially 5 main functions.
@@ -63,8 +66,20 @@ The music player allows for the user to access and play their music library with
 \subsubsection{Settings}
 The final function on the root operating system is Settings. Settings is, naturally, where all of the settings for the Scrollet can be accessed. Here users can modify the settings for any virtual operating system they are running and access other device settings.
 
+\subsubsection{Future Software Development}
+Eventually Scrollet will develop a more in-depth root operating system similar to that of Android and iOS optimized for the scrollet. However Scrollet will always support the virtualization of any tablet-based operating system of the user's choosing. This is to give the user the option to run the operating system of their choice.
 
+\section{The System of Use}
+\label{sec:system}
+The Scrollet is designed to be that middle ground that tablets just never could be. Compressible, efficient, flexible and multifaceted the Scrollet can be used for anything. It can stand upright on by itself, hang from a wall, or tilt at an angle with a kickstand. It can run any touch based operating system. It has stylus and bluetooth keyboard capability. In addition it has everything a tablet has such as front and rear-facing cameras, USB port, speakers, accelerometers and more. The innovation comes with the flexible screen that rolls up into the sides of the scrolls.
 
+\subsection{Potential Usability Issues}
+There is no such thing as a perfect product and the Scrollet definitely has some usability issues.
+\subsubsection{The Thinness of the Screen}
+The biggest of these concerns is how a user touch input would work on such a thin, flexible screen. Normal touch input could force the screen to give way. \cite{Dijkstra} The screen could also bend just as the user is holding it. Screen stability and integrity are a huge concern. Just because the screen is flexible does not mean it is unbreakable. The screen could very easily potentially rip or tear with enough force. \cite{Dijkstra} This is a very important issue which we tried to address in our design. Instead of giving the user manual sizing control of their screen, our screen is design to naturally be pulled taught by the rollers within the Grabbles. The screen then locks in the unrolled position at fixed sizes. This keeps the screen more taunt and hopefully will better allow for the maintaining of tension with touch input. The screen is also surrounded on the top and bottom by a small frame of material that is slightly stronger and less flexible material. This frame also helps with tension and preventing unwanted folds in the screen upon touch. Another issue that comes with the thinness of the screen is how easily the screen will rip. 
+
+\subsubsection{Battery Life}
+Another usability issue is battery life. The Scrollet is a powerful device and it is uncertain how long it will last when portable. 
 
 \section{Usage Scenarios}
 \subsection{As A External Monitor}
@@ -80,5 +95,8 @@ The final function on the root operating system is Settings. Settings is, natura
 \section{Usability Metric Analysis}
 
 \section{Conclusion}
+
+\bibliography{references}
+\bibliographystyle{plain}
 
 \end{document}
