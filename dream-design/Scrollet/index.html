@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Scrollet</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        <header>
+            <h1 id='top' class='center'>Scrollet</h1>
+            <div id='openClose'>
+                <input type='button' value='Open/Close' class='btn' id='action'>7
+            </div>
+        </header>
+        <div id='scrollet'>
+            <div class='center video-container'>
+                <iframe width="1000" height="600" positon="absolute" display="block" src="//www.youtube.com/embed/AxbHpXE4VM0?rel=0" frameborder="0" align="middle" id="slide" allowfullscreen></iframe>
+                <div width="10" height="600" id="slide place"></div>
+            </div>
+        </div>
+        <div id='download'>
+            <form>
+                <input type='button' value='View Scrollet Doc' onclick="window.location.href='theScrollet.pdf'">
+            </form>
+        </div>
+        <div id='scan'>
+            <h2>Sketch</h2>
+            <img src="scrollet-scan.jpeg">
+        </div>
+        <footer></footer>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+        <script type="text/javascript" src="toggle.js"></script>
+    </body>
+</html>
