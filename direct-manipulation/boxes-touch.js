@@ -29,6 +29,7 @@ var BoxesTouch = {
             });
         
     },
+    
 
     /**
      * Tracks a box as it is rubberbanded or moved across the drawing area.
@@ -61,7 +62,17 @@ var BoxesTouch = {
             if (touch.target.movingBox) {
                 // Change state to "not-moving-anything" by clearing out
                 // touch.target.movingBox.
+               var drawAreaLength = 512;
+               var drawAreaHeight = 512;
+               var touchedBoxLength = 60;
+               var touchedBoxHeight = 60;
+               var xCoord = touch.pageX;
+               var yCoord = touch.pageY;
+               if((xCoord+touchedBoxLength)-drawAreaLength > 0 || (yCoord+touchedBoxHeight)-drawAreaLength > 0){
+                    $(touch.target).remove();
+               }
                 touch.target.movingBox = null;
+               
             }
         });
     },
