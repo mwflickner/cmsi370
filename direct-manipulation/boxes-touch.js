@@ -12,6 +12,7 @@ var BoxesTouch = {
             .each(function (index, element) {
                 element.addEventListener("touchmove", BoxesTouch.trackDrag, false);
                 element.addEventListener("touchend", BoxesTouch.endDrag, false);
+                element.addEventListener("touchstart", BoxesTouch.startDraw);
             })
 
             .find("div.box").each(function (index, element) {
@@ -19,12 +20,24 @@ var BoxesTouch = {
                 element.addEventListener("touchend", BoxesTouch.unhighlight, false);
             });
     },
+    
+
+    startDraw: function (event){
+        //console.log(event);
+            $.each(event.changedTouches, function(index, touch){
+                console.log("START!", touch);
+            });
+        
+    },
 
     /**
      * Tracks a box as it is rubberbanded or moved across the drawing area.
      */
     trackDrag: function (event) {
         $.each(event.changedTouches, function (index, touch) {
+               
+            console.log("MOVE!", touch);
+               
             // Don't bother if we aren't tracking anything.
             if (touch.target.movingBox) {
                 // Reposition the object.
@@ -44,6 +57,7 @@ var BoxesTouch = {
      */
     endDrag: function (event) {
         $.each(event.changedTouches, function (index, touch) {
+               console.log("END", touch);
             if (touch.target.movingBox) {
                 // Change state to "not-moving-anything" by clearing out
                 // touch.target.movingBox.
@@ -64,6 +78,7 @@ var BoxesTouch = {
      */
     startMove: function (event) {
         $.each(event.changedTouches, function (index, touch) {
+               console.log("MOVE START", touch);
             // Highlight the element.
             $(touch.target).addClass("box-highlight");
 
