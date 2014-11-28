@@ -26,6 +26,9 @@ var BoxesTouch = {
         //console.log(event);
             $.each(event.changedTouches, function(index, touch){
                 console.log("START!", touch);
+                //var startX = touch.pageX;
+                //var startY = touch.pageY;
+                  // $("drawing-area").addClass("box").css("width","60px");
             });
         
     },
@@ -68,7 +71,7 @@ var BoxesTouch = {
                var touchedBoxHeight = 60;
                var xCoord = touch.pageX;
                var yCoord = touch.pageY;
-               if((xCoord+touchedBoxLength)-drawAreaLength > 0 || (yCoord+touchedBoxHeight)-drawAreaLength > 0){
+               if(xCoord > drawAreaLength|| yCoord > drawAreaHeight){
                     $(touch.target).remove();
                }
                 touch.target.movingBox = null;
