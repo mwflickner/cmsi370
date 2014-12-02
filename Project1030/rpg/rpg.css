@@ -2,8 +2,8 @@ div.characterTable {
 	height: 400px;
 	width:500px;
 	overflow:auto;
-}
-td.labelColumn{
+} /* JD: 16 */
+td.labelColumn{ /* JD: 12 (esp. space before braces) */
 	font-weight: bold;
 }
 h4.charViewer{

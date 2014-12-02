@@ -11,15 +11,15 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
     </head>
     
-    <body onload = "pageStart()">
+    <body onload = "pageStart()"> <!-- JD: 7 -->
         <div class="container-fluid">
             <div class="page-header">
-                	<h3>
+                	<h3> <!-- JD: 8, 9 -->
 					<nav class="navbar navbar-default" role="navigation">
 						<div class="container-fluid">
 					    <!-- Brand and toggle get grouped for better mobile display -->
 					    	<div class="navbar-header">
-					      		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					      		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <!-- JD: 10 -->
 							        <span class="sr-only">Toggle navigation</span>
 							        <span class="icon-bar"></span>
 							        <span class="icon-bar"></span>
@@ -29,7 +29,8 @@
 					    	</div>
 
 					    <!--Collect the nav links, forms, and other content for toggling-->
-						    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> <!-- JD: 10 -->
+                            <!-- JD: 11 -->
 						    <!--   <ul class="nav navbar-nav">
 						        <li class="active"><a href="#">Link</a></li>
 						        <li><a href="#">Link</a></li>
@@ -91,7 +92,7 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <button type="button" id = "playBut" onclick="play()" class="btn btn-primary btn-md">Play <span class="glyphicon glyphicon-play"></span>
+                                        <button type="button" id = "playBut" onclick="play()" class="btn btn-primary btn-md">Play <span class="glyphicon glyphicon-play"></span> <!-- JD: 7 -->
 
                                         </button>
                                     </div>
@@ -104,12 +105,12 @@
                                         </div>
                                     </div>
                                     <div class="col-md-2">
-                                        <button type = "button" class="btn btn-info btn-sm" onclick="randomItem()">Item Spawn</button>
+                                        <button type = "button" class="btn btn-info btn-sm" onclick="randomItem()">Item Spawn</button> <!-- JD: 7 -->
                                         <div class = "itemTable">
                                             <table class = "table-striped table-bordered table-hover table-condensed">
                                                 <thead>
                                                     <tr>
-                                                        <!--<th>Item</th>-->
+                                                        <!--<th>Item</th>--> <!-- JD: 11 -->
                                                     </tr>
                                                 <thead>
                                                 <tbody id="itemTable"></tbody>
@@ -127,7 +128,7 @@
                                     <!--row of character buttons -->
                                     <div class="col-md-2">
                                         <!--begins load character button column -->
-                                        <button type="button" class="btn btn-default btn-xs" id="getChars" onclick="getCharacters()">Refresh List <span class="glyphicon glyphicon-user"></span>
+                                        <button type="button" class="btn btn-default btn-xs" id="getChars" onclick="getCharacters()">Refresh List <span class="glyphicon glyphicon-user"></span> <!-- JD: 7 -->
 
                                         </button>
                                         <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#createCharModal">
@@ -141,6 +142,7 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <!--column that has table of characters -->
+                                        <!-- JD: 8 -->
                                         	<h4>Characters</h4>
 
                                         <div class="characterTable">
@@ -159,6 +161,7 @@
                                     </div>
                                     <div class="col-md-5">
                                         <!--column of the gameplay screen -->
+                                        <!-- JD: 8 -->
                                         	<h4 class="charViewer">Character Viewer</h4>
 
                                         <div class="container-fluid">
@@ -170,13 +173,14 @@
                                     </div>
                                     <!--ends column of gameplay screen -->
                                     <div class="col-md-2">
+                                        <!-- JD: 8 -->
                                             <h4 class="charViewer">Character:</h4>
-                                        <div class = "container-fluid">
+                                        <div class = "container-fluid"> <!-- JD: 12 -->
                                             <div class = "viewCharTable">
                                                 <table class="table table-bordered">
                                                     <tbody id="char1">
                                                         <tr>
-                                                            <td class = "labelColumn">Name:</td>
+                                                            <td class = "labelColumn">Name:</td> <!-- JD: 12 -->
                                                             <td id="viewCharName"></td>
                                                         </tr>
                                                         <tr>
@@ -243,7 +247,7 @@
 									</span>
 
                                     </button>
-                                    	<h4 class="modal-title" id="myModalLabel">Login to Sweg</h4>
+                                    	<h4 class="modal-title" id="myModalLabel">Login to Sweg</h4> <!-- JD: 10 -->
 
                                 </div>
                                 <!--end modal-header -->
@@ -267,7 +271,7 @@
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <button type="submit" id="loginM" class="btn btn-success" data-dismiss="modal" onclick="loginSuccess()">Login</button>
+                                                    <button type="submit" id="loginM" class="btn btn-success" data-dismiss="modal" onclick="loginSuccess()">Login</button> <!-- JD: 7 -->
                                                 </div>
                                             </div>
                                         </section>
@@ -299,7 +303,7 @@
 									</span>
 
                                 </button>
-                                	<h4 class="modal-title" id="myModalLabel">Create Account</h4>
+                                	<h4 class="modal-title" id="myModalLabel">Create Account</h4> <!-- JD: 8 -->
 
                             </div>
                             <!--end modal-header -->
@@ -322,7 +326,7 @@
                                         </div>
                                         <!--ends column -->
                                         <div class="col-md-2">
-                                            <button type="submit" id = "signUpM" onclick="accountCreateSuccess()" class="btn btn-success" data-dismiss="modal">Sign Up!</button>
+                                            <button type="submit" id = "signUpM" onclick="accountCreateSuccess()" class="btn btn-success" data-dismiss="modal">Sign Up!</button> <!-- JD: 7 -->
                                         </div>
                                         <!-- ends column-->
                                     </div>
@@ -355,7 +359,7 @@
 									</span>
 
                             </button>
-                            	<h4 class="modal-title" id="myModalLabel">Create a Character</h4>
+                            	<h4 class="modal-title" id="myModalLabel">Create a Character</h4> <!-- JD: 10, 13 -->
 
                         </div>
                         <!--end modal-header -->
@@ -389,7 +393,7 @@
                                             </button>
                                         </div>
                                         <div class="col-md-2">
-                                            <button type="submit" class="btn btn-primary btn-md" data-dismiss="modal" onclick="createCharacter()">Create! <span class="glyphicon glyphicon-ok-circle"></span>
+                                            <button type="submit" class="btn btn-primary btn-md" data-dismiss="modal" onclick="createCharacter()">Create! <span class="glyphicon glyphicon-ok-circle"></span> <!-- JD: 7 -->
 
                                             </button>
                                         </div>
@@ -410,7 +414,7 @@
         <!-- end modal -->
 
 
-        <!--Modal to Edit Character-->
+        <!--Modal to Edit Character--> <!-- JD: 14 -->
             <div class="modal fade" id="editCharModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -420,7 +424,7 @@
                                     </span>
 
                             </button>
-                                <h4 class="modal-title" id="myModalLabel">Edit Character</h4>
+                                <h4 class="modal-title" id="myModalLabel">Edit Character</h4> <!-- JD: 10, 13 -->
 
                         </div>
                         <!--end modal-header -->
@@ -454,7 +458,7 @@
                                             </button>
                                         </div>
                                         <div class="col-md-2">
-                                            <button type="submit" class="btn btn-primary btn-md" data-dismiss="modal" onclick="characterEditor()">Save <span class="glyphicon glyphicon-save"></span>
+                                            <button type="submit" class="btn btn-primary btn-md" data-dismiss="modal" onclick="characterEditor()">Save <span class="glyphicon glyphicon-save"></span> <!-- JD: 7 -->
                                             </button>
                                         </div>
                                     </div>
@@ -477,8 +481,8 @@
 
         </div>
         <!--ends row -->
-        </div>
-        <script src="theGameScript.js"></script>
+        </div> <!-- JD: 8 -->
+        <script src="theGameScript.js"></script> <!-- JD: 15 -->
         <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
