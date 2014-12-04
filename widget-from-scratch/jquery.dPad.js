@@ -1,25 +1,59 @@
-//(function ($){
+(function ($){
     var dPad = {
 
-        
+        LEFT_BUTTON: 1,
         
         setUpDPad: function (jQueryElements){
             jQueryElements
                 .ready(this.setUpButtons)
                 .keydown(this.keyer)
                 .keyup(this.keyerUpper)
+                //.mousedown(this.clicker)
+                //.mouseup(this.unclicker)
+                //.mouseleave(this.unclicker)
         },
 
         setUpButtons: function (button){
             var left = '<div class = "row"><div class="col-md-4"><button class = "dPadButton" id = "left"><span class = "glyphicon glyphicon-arrow-left"></span></button></div>';
-            var up = '<div class = "row"><div class="col-md-4 col-md-offset-3"><button class= "dPadButton" id = "up"><span class="glyphicon glyphicon-arrow-up"></span></button></div></div>';
-            var right = '<div class= "col-md-4 col-md-offset-2"><button class = "dPadButton" id = "right" ><span class="glyphicon glyphicon-arrow-right"></span></button></div></div>';
-            var down = '<div class = "row"><div class="col-md-4 col-md-offset-3"><button class = "dPadButton" id = "down" ><span class="glyphicon glyphicon-arrow-down"></span></button></div></div>';
+            var up = '<div class = "row"><div class="col-md-4 col-md-offset-3"><button class= "dPadButton" id = "up" ><span class="glyphicon glyphicon-arrow-up"></span></button></div></div>';
+            var right = '<div class= "col-md-4 col-md-offset-2"><button class = "dPadButton" id = "right"><span class="glyphicon glyphicon-arrow-right"></span></button></div></div>';
+            var down = '<div class = "row"><div class="col-md-4 col-md-offset-3"><button class = "dPadButton" id = "down"><span class="glyphicon glyphicon-arrow-down"></span></button></div></div>';
             $(".dPad").append(up + left + right + down);
             
             
 
         },
+
+        /*clicker: function (event){
+            if(event.which === dPad.LEFT_BUTTON){
+                console.log("Mouse Click!");
+                if($("#left").click()){
+                    dPad.goLeft();
+                }
+                if($("#up").click()){
+                    dPad.goUp();
+                }
+                if($("#right").click()){
+                    dPad.goRight();
+                }
+                if($("#down").click()){
+                    dPad.goDown();
+                }
+                
+            
+                event.stopPropagation();    
+                
+                
+            }
+                
+        },
+
+        unclicker: function (){
+            $("#left").removeClass("button-highlight");
+            $("#up").removeClass("button-highlight");
+            $("#right").removeClass("button-highlight");
+            $("#down").removeClass("button-highlight");
+        },*/
 
         keyer: function (event){
             switch(event.which){
@@ -44,6 +78,7 @@
                     break;  
             }
         },
+
 
         keyerUpper: function (event){
             switch(event.which){
@@ -91,27 +126,14 @@
             $("#down").addClass("button-highlight");
         },
 
-        
-
-
-        /*unhighlight: function () {
-            $(this).removeClass("button-highlight");
-        },*/
-
-        
-
-
-    
-
-        
-           
+ 
         
 
     };//closes var dPad
 
-/*    $.fn.dPad = function () {
+    $.fn.dpad = function () {
         dPad.setUpDPad(this);
     };
 
-}(jQuery)); */
+}(jQuery)); 
     
