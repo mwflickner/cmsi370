@@ -7,7 +7,7 @@
     <link rel="stylesheet" href = "dPadDemo.css">
     
   </head>
-  <body onload = "dPad()">
+  <body>
     <div>
       <h2> The D-Pad </h2>
     </div>
@@ -25,12 +25,18 @@
         <button>Down</button>
       </div>
     </div>
-    <div id = "test">
+    <div id = "dPad">
 
     </div>
 
 
   <script src = "jquery.dPad.js"></script>
+  <script>
+        $(function (){
+          dPad.setUpDPad($(document));
+        });  
+  </script>
+
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   </body>
 </html>
