@@ -24,21 +24,29 @@ var BoxesTouch = {
     setupDragState: function (){
         $(".drawing-area .box")
             .unbind("touchmove")
-            .unbind("touchleave")
+            .unbind("touchend")
     },
     
     
     startDraw: function (event){
         //console.log(event);
-            $.each(event.changedTouches, function(index, touch){
-                console.log("START!", touch);
-                this.anchorX = touch.pageX;
-                this.anchorY = touch.pageY;
-                this.drawingBox = $("<div></div>")
-                   .appendTo($(".drawing-area"))
-                   .addClass("box")
-                   .offset({left: this.anchorX, top: this.anchorY});
+            $.each(event.changedTouches, function (index, touch){
+                if(!touch.target.movingBox){
+                    console.log("START!", touch);
+                    this.anchorX = touch.pageX;
+                    this.anchorY = touch.pageY;
+                    this.drawingBox = $("<div></div>")
+                    this.drawingBox
+                       .appendTo($(".drawing-area"))
+                       .addClass("box")
+                       .offset({left: this.anchorX, top: this.anchorY});
+                    $("#drawing-area").find("div.box").each(function (index, element){
+                        element.addEventListener("touchstart", BoxesTouch.startMove, false);
+                        element.addEventListener("touchend", BoxesTouch.unhighlight, false);
+                    });
                    BoxesTouch.setupDragState();
+                }
+                    
                    
             });
         
@@ -52,7 +60,7 @@ var BoxesTouch = {
         $.each(event.changedTouches, function (index, touch) {
                
             console.log("MOVE!", touch);
-            if (touch.drawingBox){
+            if (this.drawingBox){
                var newOffset = {
                    left: (this.anchorX < event.pageX) ? this.anchorX : event.pageX,
                    top: (this.anchorY < event.pageY) ? this.anchorY : event.pageY
@@ -85,10 +93,6 @@ var BoxesTouch = {
         $.each(event.changedTouches, function (index, touch) {
                console.log("END", touch);
             if (this.drawingBox){
-                this.drawingBox
-                    .touchmove(BoxesTouch.highlight)
-                    .touchleave(BoxesTouch.unhighlight)
-                    .touchstart(BoxesTouch.startMove);
                
                this.drawingBox = null;
             }
@@ -101,7 +105,7 @@ var BoxesTouch = {
                var touchedBoxHeight = $(touch.target).height();
                var xCoord = touch.pageX;
                var yCoord = touch.pageY;
-               if(xCoord > (drawAreaLength-touchedBoxLength/2)|| yCoord > (drawAreaHeight - touchedBoxHeight/2)){
+               if(xCoord > (drawAreaLength-touchedBoxLength/2)&& yCoord > (drawAreaHeight - touchedBoxHeight/2)){
                     //$(."box-highlight").css("box-shadow", "0px 0px 6px red");
                     $(touch.target).remove();
                }
