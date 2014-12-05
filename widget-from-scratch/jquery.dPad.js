@@ -1,7 +1,5 @@
 (function ($){
     var dPad = {
-
-        LEFT_BUTTON: 1,
         
         setUpDPad: function (jQueryElements){
             jQueryElements
@@ -19,6 +17,7 @@
             var right = '<div class= "col-md-4 col-md-offset-2"><button class = "dPadButton" id = "right"><span class="glyphicon glyphicon-arrow-right"></span></button></div></div>';
             var down = '<div class = "row"><div class="col-md-4 col-md-offset-3"><button class = "dPadButton" id = "down"><span class="glyphicon glyphicon-arrow-down"></span></button></div></div>';
             $(".dPad").append(up + left + right + down);
+            
             
             
 
@@ -58,22 +57,22 @@
         keyer: function (event){
             switch(event.which){
                 case 37: // left arrow
-                    console.log("SWITCH WORKS");
+                    //console.log("SWITCH WORKS");
                     dPad.goLeft();
                     break;
 
                 case 38: // up arrow
-                    console.log("SWITCH WORKS!");
+                    //console.log("SWITCH WORKS!");
                     dPad.goUp();
                     break;
 
                 case 39: // right arrow
-                    console.log("SWITCH WORKS");
+                    //console.log("SWITCH WORKS");
                     dPad.goRight();
                     break;
 
                 case 40: // down arrow
-                    console.log("SWITCH WORKS");
+                    //console.log("SWITCH WORKS");
                     dPad.goDown();
                     break;  
             }
@@ -83,27 +82,26 @@
         keyerUpper: function (event){
             switch(event.which){
                 case 37: // left arrow
-                    console.log("KEYUP WORKS");
+                    //console.log("KEYUP WORKS");
                     $("#left").removeClass("button-highlight");
                     break;
 
                 case 38: // up arrow
-                    console.log("KEYUP WORKS!");
+                    //console.log("KEYUP WORKS!");
                     $("#up").removeClass("button-highlight");
                     break;
 
                 case 39: // right arrow
-                    console.log("KEYUP WORKS");
+                    //console.log("KEYUP WORKS");
                     $("#right").removeClass("button-highlight");
                     break;
 
                 case 40: // down arrow
-                    console.log("KEYUP WORKS");
+                    //console.log("KEYUP WORKS");
                     $("#down").removeClass("button-highlight");
                     break;  
             }
         },
-
 
 
         goLeft: function (){
@@ -114,6 +112,17 @@
         goUp: function (){
             console.log("UP!");
             $("#up").addClass("button-highlight");
+            var currentTarget = parseInt($(".vertical-target").attr("id"));
+
+            console.log(currentTarget);
+            if(currentTarget > 1){
+                var newTarget = currentTarget - 1;
+                $("#"+ currentTarget).removeClass("vertical-target");
+                $("#"+ newTarget).addClass("vertical-target");
+
+            }
+            
+
         },
 
         goRight: function (){
@@ -124,6 +133,15 @@
         goDown: function (){
             console.log("DOWN!");
             $("#down").addClass("button-highlight");
+            var currentTarget = parseInt($(".vertical-target").attr("id"));
+            var rowCount = $(".tRow").length;
+            console.log("table is size: " + rowCount);
+            console.log(currentTarget);
+            if(currentTarget < rowCount){
+                var newTarget = currentTarget + 1;
+                $("#"+ currentTarget).removeClass("vertical-target");
+                $("#"+ newTarget).addClass("vertical-target");
+            }
         },
 
  

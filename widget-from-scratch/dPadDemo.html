@@ -13,10 +13,48 @@
   <body>
     <div class = "container-fluid">
       <div class = "row">
-          <h2> The D-Pad</h2>
+          <div class = "col-md-4">
+            <h2> The D-Pad</h2>
+          </div>
       </div>
       <div class = "row">
+        <div class = "col-md-4">
           <div id = "dPad" class = "dPad container-fluid">
+          </div>
+        </div>
+        <div class = "col-md-6">
+          <table class = "table dpad-receiver">
+            <tr id = "1" class = "tRow vertical-target">
+              <!--table node id reflects position -->
+              <td>
+                DPad will navigate table!
+              </td>
+              <td>
+                Use the Up and Down Arrow Keys to Move From Row to Row
+              </td>
+            </tr>
+            <tr id = "2" class ="tRow">
+              <td>
+                The selected row will be highlighted in grey!
+              </td>
+              <td>
+            </tr>
+            <tr id = "3" class ="tRow">
+              <td>
+                The D-Pad will also highlight which key you press on your keyboard.
+              </td>
+            </tr>
+            <tr id = "4" class = "tRow">
+              <td>
+                Click functionality not currently support on the D-Pad.
+              </td>
+            </tr>
+            <tr id = "5" class = "tRow">
+              <td>
+                To use in code just build a table! When constructing your rows, set their id equal to the row number (ex. row 1 id = 1) and the row class to "tRow". Give whatever row you want to start focus on the class "vertical-target" as well. Last, set the table class to "dpad-receiver" and you should be good to go!
+          </table>
+
+        </div>
           </div>
         </div>
       </div>
