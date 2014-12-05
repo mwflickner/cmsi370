@@ -1,4 +1,4 @@
-var theGame = {
+var theGame = { // JD: 17 ...this is still a top-level object!
     //var charLocation;
     //var itemSlots = ["head", "hand", "arms", "legs", "chest", "shoulders", "feet", "weapon1", "weapon2", "knife"];
     //var loggedIn = false;
@@ -19,7 +19,7 @@ var theGame = {
             $("#topMenuLogin").text("Logout");
             $("#topMenuCreate").hide();
             $("#topMenuLogin").attr({
-                "onclick": "logoutSuccess()",
+                "onclick": "logoutSuccess()", // JD: 7 (this is still equivalent to doing this in HTML)
                     "data-toggle": ""
             });
         });
@@ -28,10 +28,10 @@ var theGame = {
     accountCreateSuccess: function () {
         $("#signUpM").click(function () {
             $("#topMenuCreate").hide();
-            $("#topMenuLogin").text("Logout");
+            $("#topMenuLogin").text("Logout"); // JD: 19
             $("#topMenuLogin").attr({
-                "onclick": "logoutSuccess()",
-                    "data-toggle": ""
+                "onclick": "logoutSuccess()", // JD: 7
+                    "data-toggle": "" // JD: 8
             });
         });
     },
@@ -42,7 +42,7 @@ var theGame = {
                 $("#topMenuLogin").text("Login");
                 $("#topMenuLogin").attr({
                     "onclick": "loginSucess()",
-                        "data-toggle": "modal"
+                        "data-toggle": "modal" // JD: 8
                 });
                 $("#topMenuCreate").show();
             });
@@ -61,7 +61,7 @@ var theGame = {
             
     },
 
-    clearCharTable: function() {
+    clearCharTable: function() { // JD: 12
         $(document).ready(function () {
             $("#getChars").click(function () {
                  $("#charTable").empty();
@@ -82,6 +82,7 @@ var theGame = {
                         .append($("<td></td>").text(character.classType))
                         .append($("<td></td>").text(character.gender))
                         .append($("<td></td>").text(character.level))
+                         // JD: 7 ....instead, assign actual functions
                         .append($("<td></td>").html("<button type='button' class='btn btn-primary btn-xs' id=" + character.id + " onclick='theGame.viewCharacter(" + character.id + ")'>View</button>"))
                         .append($("<td></td>").html("<button type='button' class='btn btn-danger btn-xs' id=" + character.id + " onclick='theGame.deleteCharacter(" + character.id + ")'>Delete</button>"));
                 }));
@@ -130,9 +131,10 @@ var theGame = {
 
     viewCharacter: function (charID) {
         $.getJSON(
-            "http://lmu-diabolical.appspot.com/characters/" + charID + "",
+            "http://lmu-diabolical.appspot.com/characters/" + charID + "", // JD: 21
 
         function (character) {
+            // JD: 22
             $("#viewCharName").text(character.name);
             $("#viewCharClass").text(character.classType);
             $("#viewCharGender").text(character.gender);
@@ -147,6 +149,7 @@ var theGame = {
 
     editCharacter: function (inputID) {
         if (confirm("You Sure?")) {
+            // JD: 23
             var charName = $("#editCharacterName").val();
             var charClass = $("#editCharacterClass").val();
             var sex = $("input[name='sex']:checked").val();
@@ -155,7 +158,7 @@ var theGame = {
 
             $.ajax({
                 type: 'PUT',
-                url: "http://lmu-diabolical.appspot.com/characters/" + inputID + "",
+                url: "http://lmu-diabolical.appspot.com/characters/" + inputID + "", // JD: 21
                 data: JSON.stringify({
                     id: inputID,
                     name: charName,
@@ -167,13 +170,12 @@ var theGame = {
                 contentType: "application/json",
                 dataType: "json",
                 accept: "application/json",
-                success: function (data, textStatus, jqXHR) {
+                success: function (data, textStatus, jqXHR) { // JD: 3
                     console.log("Done: no news is good news.");
                 }
             });
         }
 
-    },
 
     characterEditor: function () {
         this.editCharacter(tempID);
@@ -185,8 +187,8 @@ var theGame = {
         if (confirm("Wanna Delete?")) {
             $.ajax({
                 type: 'DELETE',
-                url: "http://lmu-diabolical.appspot.com/characters/" + charID + "",
-                success: function (data, textStatus, jqXHR) {
+                url: "http://lmu-diabolical.appspot.com/characters/" + charID + "", // JD: 21
+                success: function (data, textStatus, jqXHR) { // JD: 3
                     console.log("Gone baby gone.");
                 }
             });
@@ -205,6 +207,7 @@ var theGame = {
             },
 
             function (item) {
+                // JD: 11
                 /* $("#itemTable").append(item.map(function (item) {
                         return $("<tr></tr>")
                             .append($("<td></td>").text(item.absorption))

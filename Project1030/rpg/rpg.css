@@ -19,7 +19,7 @@ div.jumbotron{
 
 
 
-td.labelColumn{
+td.labelColumn{ /* JD: 12 (esp. space before braces) */
     font-weight: bold;
     font-color: black;
 }
