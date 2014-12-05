@@ -12,7 +12,7 @@ var BoxesTouch = {
             .each(function (index, element) {
                 element.addEventListener("touchmove", BoxesTouch.trackDrag, false);
                 element.addEventListener("touchend", BoxesTouch.endDrag, false);
-                element.addEventListener("touchstart", BoxesTouch.startDraw);
+                element.addEventListener("touchstart", BoxesTouch.startDraw, false);
             })
 
             .find("div.box").each(function (index, element) {
@@ -21,14 +21,33 @@ var BoxesTouch = {
             });
     },
     
-
+    setupDragState: function (){
+        $(".drawing-area .box")
+            .unbind("touchmove")
+            .unbind("touchend")
+    },
+    
+    
     startDraw: function (event){
         //console.log(event);
-            $.each(event.changedTouches, function(index, touch){
-                console.log("START!", touch);
-                //var startX = touch.pageX;
-                //var startY = touch.pageY;
-                  // $("drawing-area").addClass("box").css("width","60px");
+            $.each(event.changedTouches, function (index, touch){
+                if(!touch.target.movingBox){
+                    console.log("START!", touch);
+                    this.anchorX = touch.pageX;
+                    this.anchorY = touch.pageY;
+                    this.drawingBox = $("<div></div>")
+                    this.drawingBox
+                       .appendTo($(".drawing-area"))
+                       .addClass("box")
+                       .offset({left: this.anchorX, top: this.anchorY});
+                    $("#drawing-area").find("div.box").each(function (index, element){
+                        element.addEventListener("touchstart", BoxesTouch.startMove, false);
+                        element.addEventListener("touchend", BoxesTouch.unhighlight, false);
+                    });
+                   BoxesTouch.setupDragState();
+                }
+                    
+                   
             });
         
     },
@@ -41,14 +60,25 @@ var BoxesTouch = {
         $.each(event.changedTouches, function (index, touch) {
                
             console.log("MOVE!", touch);
-               
+            if (this.drawingBox){
+               var newOffset = {
+                   left: (this.anchorX < event.pageX) ? this.anchorX : event.pageX,
+                   top: (this.anchorY < event.pageY) ? this.anchorY : event.pageY
+               }
+               this.drawingBox
+                   .offset(newOffset)
+                   .width(Math.abs(event.pageX - this.anchorX))
+                   .height(Math.abs(event.pageY - this.anchorY))
+            }
             // Don't bother if we aren't tracking anything.
-            if (touch.target.movingBox) {
+            else if (touch.target.movingBox) {
                 // Reposition the object.
+               
                 touch.target.movingBox.offset({
                     left: touch.pageX - touch.target.deltaX,
                     top: touch.pageY - touch.target.deltaY
                 });
+
             }
         });
         
@@ -62,27 +92,39 @@ var BoxesTouch = {
     endDrag: function (event) {
         $.each(event.changedTouches, function (index, touch) {
                console.log("END", touch);
-            if (touch.target.movingBox) {
+            if (this.drawingBox){
+               
+               this.drawingBox = null;
+            }
+            else if (touch.target.movingBox) {
                 // Change state to "not-moving-anything" by clearing out
                 // touch.target.movingBox.
-               var drawAreaLength = 512;
-               var drawAreaHeight = 512;
-               var touchedBoxLength = 60;
-               var touchedBoxHeight = 60;
+               var drawAreaLength = $(".drawing-area").width();
+               var drawAreaHeight = $(".drawing-area").height();
+               var touchedBoxLength = $(touch.target).width();
+               var touchedBoxHeight = $(touch.target).height();
                var xCoord = touch.pageX;
                var yCoord = touch.pageY;
-               if(xCoord > drawAreaLength|| yCoord > drawAreaHeight){
+               if(xCoord > (drawAreaLength-touchedBoxLength/2)&& yCoord > (drawAreaHeight - touchedBoxHeight/2)){
+                    //$(."box-highlight").css("box-shadow", "0px 0px 6px red");
                     $(touch.target).remove();
                }
                 touch.target.movingBox = null;
                
             }
+
+
         });
     },
 
     /**
      * Indicates that an element is unhighlighted.
      */
+    highlight: function() {
+        $(this).addClass("box-highlight");
+    },
+
+
     unhighlight: function () {
         $(this).removeClass("box-highlight");
     },

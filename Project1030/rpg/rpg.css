@@ -1,26 +1,56 @@
-div.characterTable {
-	height: 400px;
-	width:500px;
-	overflow:auto;
-} /* JD: 16 */
-td.labelColumn{ /* JD: 12 (esp. space before braces) */
-	font-weight: bold;
+
+div.container-fluid{
+    background-color: white;
+    border-color: #008B8B;
 }
+
+
+div.characterTable {
+    height: 400px;
+    width:500px;
+    overflow:auto;
+    border-color: #008B8B;
+    font-color: black;
+}
+
+div.jumbotron{
+    background-color: white;
+}
+
+
+
+td.labelColumn{ /* JD: 12 (esp. space before braces) */
+    font-weight: bold;
+    font-color: black;
+}
+
+
+h4{
+    font-color: black;
+}
+
 h4.charViewer{
-	margin-left: auto;
-	margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 div.charView{
-	margin-left: auto;
-	margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 thead.charStats{
-	font-weight: bold;
+    font-weight: bold;
+    font-color: black;
 }
 
 section.tab-content{
-	border-style: solid;
-	border-width: 3px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #008B8B;
+    background-color: white;
+}
+p.info{
+    color: black;
+    border-color: #008B8B;
 }

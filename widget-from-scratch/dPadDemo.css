@@ -1,0 +1,10 @@
+#dPad{
+    background:#ccc;
+    position: absolute;
+    top: 150;
+    left: 150;
+}
+
+.button-highlight{
+    box-shadow: 0px 0px 6px #88F
+}
