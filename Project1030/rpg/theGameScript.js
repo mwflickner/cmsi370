@@ -2,6 +2,94 @@ var theGame = { // JD: 17 ...this is still a top-level object!
     //var charLocation;
     //var itemSlots = ["head", "hand", "arms", "legs", "chest", "shoulders", "feet", "weapon1", "weapon2", "knife"];
     //var loggedIn = false;
+    setup: function (jQueryElements){
+        var loggedIn = false;
+
+        //control of the play button
+        $("#playBut").click(function(){
+            if(!loggedIn){
+                alert("Please login first!");
+            }
+            else{
+                $("#mainScreen").show();
+            }
+            
+        });
+
+        //login sucessful
+        $("#loginM").click(function () {
+            $("#topMenuLogin").text("Logout");
+            $("#topMenuCreate").hide();
+            $("#topMenuLogin").attr({// JD: 7 (this is still equivalent to doing this in HTML)
+                    "data-toggle": ""
+            });
+            loggedIn = true;
+        });
+
+        //create account succesful
+        $("#signUpM").click(function () {
+            $("#topMenuCreate").hide();
+            $("#topMenuLogin").text("Logout"); // JD: 19
+            $("#topMenuLogin").attr({// JD: 7
+                    "data-toggle": "" // JD: 8
+            });
+            loggedIn = true;
+        });
+
+        //log out sucessful
+        $(document).ready(function () {
+            $("#topMenuLogin").click(function () {
+                $("#topMenuLogin").text("Login");
+                $("#topMenuLogin").attr({
+                    "data-toggle": "modal" // JD: 8
+                });
+                $("#topMenuCreate").show();
+            });
+            loggedIn= false;
+        });
+
+        //hides the main screen on page load
+        $(document).ready(function(){
+            $("#mainScreen").hide();
+        });
+
+        //clears the Character Table
+        $(document).ready(function () {
+            $("#getChars").click(function () {
+                 $("#charTable").empty();
+            })
+
+        });
+
+        //fills out the chracter table
+        $("#getChars").click(function(){
+            $.getJSON(
+                "http://lmu-diabolical.appspot.com/characters",
+
+            function (characters) {
+                $("#charTable").append(characters.map(function (character) {
+                    return $("<tr></tr>")
+                        .append($("<td></td>").text(character.name))
+                        .append($("<td></td>").text(character.classType))
+                        .append($("<td></td>").text(character.gender))
+                        .append($("<td></td>").text(character.level))
+                         // JD: 7 ....instead, assign actual functions
+                        .append($("<td></td>").html("<button type='button' class='btn btn-primary btn-xs' id=" + character.id + " onclick='theGame.viewCharacter(" + character.id + ")'>View</button>"))
+                        .append($("<td></td>").html("<button type='button' class='btn btn-danger btn-xs' id=" + character.id + " onclick='theGame.deleteCharacter(" + character.id + ")'>Delete</button>"));
+                }));
+            });
+        });
+
+        $(document).ready(function () {
+            $("#getChars").click(function () {
+                 $("#charTable").empty();
+            })
+
+        })
+
+
+    },
+    
 
     itemGen: function () {
         var itemSlots = ["head", "hand", "arms", "legs", "chest", "shoulders", "feet", "weapon1", "weapon2", "knife"];
@@ -14,7 +102,7 @@ var theGame = { // JD: 17 ...this is still a top-level object!
     },
 
 
-    loginSuccess: function () {
+    /*loginSuccess: function () {
         $("#loginM").click(function () {
             $("#topMenuLogin").text("Logout");
             $("#topMenuCreate").hide();
@@ -24,6 +112,7 @@ var theGame = { // JD: 17 ...this is still a top-level object!
             });
         });
     },
+    
 
     accountCreateSuccess: function () {
         $("#signUpM").click(function () {
@@ -49,6 +138,8 @@ var theGame = { // JD: 17 ...this is still a top-level object!
         });
     },
 
+   
+
     pageStart: function () {
         $("#mainScreen").hide();
     },
@@ -59,7 +150,7 @@ var theGame = { // JD: 17 ...this is still a top-level object!
             $("#mainScreen").show();        
         });
             
-    },
+    }, */
 
     clearCharTable: function() { // JD: 12
         $(document).ready(function () {
@@ -72,24 +163,6 @@ var theGame = { // JD: 17 ...this is still a top-level object!
 
     getCharacters: function () {
         
-            $.getJSON(
-                "http://lmu-diabolical.appspot.com/characters",
-
-            function (characters) {
-                $("#charTable").append(characters.map(function (character) {
-                    return $("<tr></tr>")
-                        .append($("<td></td>").text(character.name))
-                        .append($("<td></td>").text(character.classType))
-                        .append($("<td></td>").text(character.gender))
-                        .append($("<td></td>").text(character.level))
-                         // JD: 7 ....instead, assign actual functions
-                        .append($("<td></td>").html("<button type='button' class='btn btn-primary btn-xs' id=" + character.id + " onclick='theGame.viewCharacter(" + character.id + ")'>View</button>"))
-                        .append($("<td></td>").html("<button type='button' class='btn btn-danger btn-xs' id=" + character.id + " onclick='theGame.deleteCharacter(" + character.id + ")'>Delete</button>"));
-                }));
-            });
-            this.clearCharTable();
-        
-
 
     },
 
@@ -175,6 +248,7 @@ var theGame = { // JD: 17 ...this is still a top-level object!
                 }
             });
         }
+    },
 
 
     characterEditor: function () {

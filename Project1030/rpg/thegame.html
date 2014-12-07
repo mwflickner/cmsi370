@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
     </head>
     
-    <body onload = "theGame.pageStart()"> <!-- JD: 7 -->
+    <body> <!-- JD: 7 -->
       <div class="container-fluid">
         <div class="page-header">
           <h3>
@@ -72,7 +72,7 @@
                 <div class="container-fluid">
                   <div class="row">
                     <div class="col-md-2">
-                      <button type="button" id = "playBut" onclick = "theGame.play()" class="btn btn-primary btn-md">Play <span class="glyphicon glyphicon-play"></span> <!-- JD: 7 -->
+                      <button type="button" id = "playBut" class="btn btn-primary btn-md">Play <span class="glyphicon glyphicon-play"></span> <!-- JD: 7 -->
                       </button>
                     </div><!-- ends first column -->
                     <div class="col-md-8">
@@ -106,7 +106,7 @@
                   <div class="container-fluid">
                     <div class="row"><!--row of character buttons -->
                       <div class="col-md-2"><!--begins load character button column -->
-                        <button type="button" class="btn btn-default btn-xs" id="getChars" onclick="theGame.getCharacters()">Refresh List <!-- JD: 7 -->
+                        <button type="button" class="btn btn-default btn-xs" id="getChars">Refresh List <!-- JD: 7 -->
                           <span class="glyphicon glyphicon-user"></span>
                         </button>
                         <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#createCharModal">Create Character
@@ -214,7 +214,7 @@
 
                 <div class="row"><!-- row that holds modals -->
 
-                  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -222,7 +222,7 @@
                             <span class="sr-only">Close
                             </span>
                           </button>
-                          <h4 class="modal-title" id="myModalLabel">Login to Sweg</h4> <!-- JD: 10 -->
+                          <h4 class="modal-title" id="loginModal">Login to Sweg</h4> <!-- JD: 10 -->
                         </div><!--end modal-header -->
                         <div class="modal-body">
                           <form role="form">
@@ -242,7 +242,7 @@
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                 </div>
                                 <div class="col-md-2">
-                                  <button type="submit" id="loginM" class="btn btn-success" data-dismiss="modal" onclick="theGame.loginSuccess()">Login</button> <!-- JD: 7 -->
+                                  <button type="submit" id="loginM" class="btn btn-success" data-dismiss="modal">Login</button> <!-- JD: 7 -->
                                 </div>
                               </div>
                             </section>
@@ -254,7 +254,7 @@
                     </div><!-- end modal dialogue -->
                   </div><!-- end modal -->
 
-                  <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="createAccountModal" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -262,7 +262,7 @@
                             <span aria-hidden="true">&times;</span>
                             <span class="sr-only">Close</span>
                           </button>
-                          <h4 class="modal-title" id="myModalLabel">Create Account</h4> <!-- JD: 10, 13 -->
+                          <h4 class="modal-title" id="createAccountModal">Create Account</h4> <!-- JD: 10, 13 -->
                         </div><!--end modal-header -->
                         <div class="modal-body">
                           <form role="form">
@@ -281,7 +281,7 @@
                                   </button>
                                 </div><!--ends column -->
                                 <div class="col-md-2">
-                                  <button type="submit" id = "signUpM" onclick="theGame.accountCreateSuccess()" class="btn btn-success" data-dismiss="modal">Sign Up! <!-- JD: 7 -->
+                                  <button type="submit" id = "signUpM" class="btn btn-success" data-dismiss="modal">Sign Up! <!-- JD: 7 -->
                                   </button>
                                 </div><!-- ends column-->
                               </div><!--ends row -->
@@ -295,7 +295,7 @@
                   </div><!-- end modal -->
 
                   <!--Modal to Create a Character-->
-                  <div class="modal fade" id="createCharModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal fade" id="createCharModal" tabindex="-1" role="dialog" aria-labelledby="createCharLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -304,7 +304,7 @@
                             <span class="sr-only">Close
                             </span>
                           </button>
-                          <h4 class="modal-title" id="myModalLabel">Create a Character</h4> <!-- JD: 10, 13 -->
+                          <h4 class="modal-title" id="createCharLabel">Create a Character</h4> <!-- JD: 10, 13 -->
                         </div><!--end modal-header -->
                         <div class="modal-body">
                           <form role="form">
@@ -350,7 +350,7 @@
                   </div><!-- end modal -->
 
                   <!--Modal to Edit Character--> <!-- JD: 14 -->
-                  <div class="modal fade" id="editCharModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal fade" id="editCharModal" tabindex="-1" role="dialog" aria-labelledby="editCharLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -358,7 +358,7 @@
                             <span aria-hidden="true">&times;</span>
                             <span class="sr-only">Close</span>
                           </button>
-                          <h4 class="modal-title" id="myModalLabel">Edit Character</h4> <!-- JD: 10, 13 -->
+                          <h4 class="modal-title" id="editCharLabel">Edit Character</h4> <!-- JD: 10, 13 -->
                         </div><!--end modal-header -->
                         <div class="modal-body">
                           <p>Enter new information for your character.</p>
@@ -411,6 +411,11 @@
         <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script>
+          $(function () {
+                 theGame.setup($(document));
+            });
+        </script>
         
     </body>
 </html>
