@@ -82,23 +82,14 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-2">
-                      <button type = "button" class="btn btn-info btn-sm" onclick="theGame.randomItem()">Item Spawn</button> <!-- JD: 7 -->
-                        <div class = "itemTable">
-                          <table class = "table-striped table-bordered table-hover table-condensed">
-                            <thead>
-                              <tr>
-                                <!--<th>Item</th>--> <!-- JD: 11 -->
-                              </tr>
-                            <thead>
-                            <tbody id="itemTable"></tbody>
-                          </table>
-                        </div>
-                      </div>
+                    <div class="col-md-2" id="items">
+                      <button type = "button" id = "itemSpawn" class="btn btn-info btn-sm">Item Spawn</button> <!-- JD: 7 -->
+                      <p id = "itemCreated">Sweg!</p>                
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
 
 
               <div class="tab-pane" id="profile">
@@ -145,29 +136,29 @@
 
                           <div class="col-md-2">
                             <h4 class="charViewer">Character:</h4>
-                              <div class = "container-fluid"> <!-- JD: 12 -->
-                                <div class = "viewCharTable">
+                              <div class="container-fluid"> <!-- JD: 12 -->
+                                <div class="viewCharTable">
                                   <table class="table table-bordered">
                                     <tbody id="char1">
 <<<<<<< HEAD
-                                      <tr id="1" class = "vertical-target">
-                                        <td class = "labelColumn">Name:</td>
+                                      <tr id="1" class="vertical-target">
+                                        <td class="labelColumn">Name:</td>
 =======
                                       <tr>
-                                        <td class = "labelColumn">Name:</td> <!-- JD: 12 -->
+                                        <td class="labelColumn">Name:</td> <!-- JD: 12 -->
 >>>>>>> a54dee097537c6e2c526adeb18e26583021b6846
                                         <td id="viewCharName"></td>
                                       </tr>
                                       <tr id="2">
-                                        <td class = "labelColumn">Class:</td>
+                                        <td class="labelColumn">Class:</td>
                                         <td id="viewCharClass"></td>
                                       </tr>
                                       <tr id="3">
-                                        <td class = "labelColumn">Gender:</td>
+                                        <td class="labelColumn">Gender:</td>
                                         <td id="viewCharGender"></td>
                                       </tr>
                                       <tr id="4">
-                                        <td class = "labelColumn">Level:</td>
+                                        <td class="labelColumn">Level:</td>
                                         <td id="viewCharLevel"></td>
                                       <tr id ="editor">
                                       </tr>
@@ -336,7 +327,7 @@
                                   </button>
                                 </div>
                                 <div class="col-md-2">
-                                  <button type="submit" class="btn btn-primary btn-md" data-dismiss="modal" onclick="theGame.createCharacter()">Create! <span class="glyphicon glyphicon-ok-circle"></span> <!-- JD: 7 -->
+                                  <button type="submit" id ="createCharButton" class="btn btn-primary btn-md" data-dismiss="modal">Create! <span class="glyphicon glyphicon-ok-circle"></span> <!-- JD: 7 -->
                                   </button>
                                 </div>
                               </div>
@@ -390,7 +381,7 @@
                                   </button>
                                 </div>
                                 <div class="col-md-2">
-                                  <button type="submit" class="btn btn-primary btn-md" data-dismiss="modal" onclick="theGame.characterEditor()">Save <!-- JD: 7 -->
+                                  <button type="submit" id="editCharSave" class="btn btn-primary btn-md" data-dismiss="modal">Save <!-- JD: 7 -->
                                     <span class="glyphicon glyphicon-save"></span>
                                   </button>
                                 </div>
@@ -413,7 +404,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script>
           $(function () {
-                 theGame.setup($(document));
+                 theGame($(document));
             });
         </script>
         
