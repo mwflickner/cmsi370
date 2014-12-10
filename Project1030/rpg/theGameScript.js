@@ -10,8 +10,7 @@ var theGame = function (jQueryElements){
                 $("#mainScreen").show();
             }
         });
-            
-
+        
         //login sucessful
         $("#loginM").click(function () {
             $("#topMenuLogin").text("Logout");
@@ -67,15 +66,16 @@ var theGame = function (jQueryElements){
                         .append($("<td></td>").text(character.gender))
                         .append($("<td></td>").text(character.level))
                          // JD: 7 ....instead, assign actual functions
-                        .append($("<td></td>").html("<button type='button' id='"+(character.id)+"' class='characterView btn btn-primary btn-xs'>View</button>"))
-                        .append($("<td></td>").html("<button type='button' id='"+(character.id)+"' class='characterDelete btn btn-danger btn-xs'>Delete</button>"));
+                        .append($("<td></td>").html("<button type='button' id='v"+(character.id)+"' class='characterView btn btn-primary btn-xs'>View</button>"))
+                        .append($("<td></td>").html("<button type='button' id='d"+(character.id)+"' class='characterDelete btn btn-danger btn-xs'>Delete</button>"));
                 }));
             });
         });
         
         //sets character to view in table
         $("#charTable").on("click", "button.characterView", function(){
-            var charID = this.id;
+            var buttonID = this.id;
+            var charID = buttonID.substring(1, (buttonID.length));
             $.getJSON(
                 "http://lmu-diabolical.appspot.com/characters/" + charID,// JD: 21
 
@@ -85,7 +85,7 @@ var theGame = function (jQueryElements){
                 $("#viewCharClass").text(character.classType);
                 $("#viewCharGender").text(character.gender);
                 $("#viewCharLevel").text(character.level);
-                $("#editor").html("<button type='button' class='btn btn-default btn-sm' data-toggle='modal' data-target='#editCharModal' id='editThis'>Edit " + character.name + "</button>")
+                $("#editor").html("<button type='button' id='editThis' class='btn btn-default btn-sm' data-toggle='modal' data-target='#editCharModal' id='editThis'>Edit " + character.name + "</button>")
                 tempID = charID;
 
                 console.log(character);
@@ -122,6 +122,12 @@ var theGame = function (jQueryElements){
                     }
                 });
                 $("#getChars").click();
+                $("#viewCharName").text("");
+                $("#viewCharClass").text("");
+                $("#viewCharGender").text("");
+                $("#viewCharLevel").text("");
+                $("#editThis").remove();
+                
             }
         });
 
@@ -136,6 +142,7 @@ var theGame = function (jQueryElements){
             var charLocation;
             $.ajax({
                 type: 'POST',
+                async: false,
                 url: "http://lmu-diabolical.appspot.com/characters",
                 data: JSON.stringify({
                     name: charName,
@@ -153,10 +160,13 @@ var theGame = function (jQueryElements){
                     charLocation = jqXHR.getResponseHeader("Location");
                 }
             });
+            $("#getChars").click();
         });
 
+        //deletes a character
         $("#charTable").on("click", "button.characterDelete", function(){
-            var charID = this.id;
+            var buttonID = this.id;
+            var charID = buttonID.substring(1, (buttonID.length));
             if (confirm("Wanna Delete?")) {
                 $.ajax({
                     type: 'DELETE',
