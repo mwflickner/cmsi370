@@ -72,18 +72,18 @@
                 <div class="container-fluid">
                   <div class="row">
                     <div class="col-md-2">
-                      <button type="button" id = "playBut" class="btn btn-primary btn-md">Play <span class="glyphicon glyphicon-play"></span> <!-- JD: 7 -->
+                      <button type="button" id ="playBut" class="btn btn-primary btn-md">Play <span class="glyphicon glyphicon-play"></span> <!-- JD: 7 -->
                       </button>
                     </div><!-- ends first column -->
                     <div class="col-md-8">
-                      <div class= "jumbotron">
+                      <div class="jumbotron">
                         <div class="container-fluid">
                           <img src="http://www.fullprogramlarindir.com/wp-content/uploads/2013/12/assassins-creed-4-black-flag-pirate-naval-exploration-gameplay.jpg" class="img-responsive" alt="Responsive image" id="mainScreen">
                         </div>
                       </div>
                     </div>
                     <div class="col-md-2" id="items">
-                      <button type = "button" id = "itemSpawn" class="btn btn-info btn-sm">Item Spawn</button> <!-- JD: 7 -->
+                      <button type ="button" id ="itemSpawn" class="btn btn-info btn-sm">Item Spawn</button> <!-- JD: 7 -->
                       <p id = "itemCreated">Sweg!</p>                
                     </div>
                   </div>
@@ -124,49 +124,53 @@
                             </div>
                           </div>
 
-                          <div class="col-md-5"><!--column of the gameplay screen -->
+                          <div class="col-md-4"><!--column of the gameplay screen -->
                             <h4 class="charViewer">Character Viewer</h4>
                             <div class="container-fluid">
-                              <div class= "charView">
+                              <div class="charView">
                                 <img src="http://2.bp.blogspot.com/-36qKWMaDXwQ/U7Q4pfiv9PI/AAAAAAAAAFg/aolCUCJZpgQ/s1600/image_40828_full.jpg" class="img-responsive" alt="Responsive image">
                                 </img>
                               </div>
                             </div>
                           </div><!--ends column of gameplay screen -->
 
-                          <div class="col-md-2">
+                          <div class="col-md-3">
                             <h4 class="charViewer">Character:</h4>
                               <div class="container-fluid"> <!-- JD: 12 -->
                                 <div class="viewCharTable">
                                   <table class="table table-bordered">
                                     <tbody id="char1">
-                                      <tr id="1" class="vertical-target">
-                                        <td class="labelColumn">Name:</td>
-                                      <tr>
+                                      <tr id="1" class="tRow vertical-target">
                                         <td class="labelColumn">Name:</td> <!-- JD: 12 -->
                                         <td id="viewCharName"></td>
                                       </tr>
-                                      <tr id="2">
+                                      <tr id="2" class="tRow">
                                         <td class="labelColumn">Class:</td>
                                         <td id="viewCharClass"></td>
                                       </tr>
-                                      <tr id="3">
+                                      <tr id="3" class="tRow">
                                         <td class="labelColumn">Gender:</td>
                                         <td id="viewCharGender"></td>
                                       </tr>
-                                      <tr id="4">
+                                      <tr id="4" class="tRow">
                                         <td class="labelColumn">Level:</td>
                                         <td id="viewCharLevel"></td>
-                                      <tr id ="editor">
+                                      <tr id="editor">
                                       </tr>
                                     </tbody>
                                   </table>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    <div id="dPad" class="dPad container-fluid">
+                                  </div>
                                 </div>
                               </div>
                             </div>     
                           </div><!--ends row of table and screen -->
                         </div>
                       </div>
+                    </div>
                     </div>
 
                     <div class="tab-pane" id="messages">
@@ -440,6 +444,12 @@
           $(function () {
                  theGame($(document));
             });
+        </script>
+        <script src="jquery.dPad.js"></script>
+        <script>
+          $(function (){
+            $(document).dpad();
+          });  
         </script>
         
     </body>

@@ -64,3 +64,11 @@ div.info{
     border-width: 4px;
     border-color: #008B8B;
 }
+
+.button-highlight{
+    box-shadow: 0px 0px 6px #88F
+}
+
+.vertical-target{
+    box-shadow: 0px 0px 6px #88F;
+    background: yellow;
