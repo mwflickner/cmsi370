@@ -15,7 +15,7 @@
 }
 
 #garbage{
-	position: absolute;
+	position: absolute; /* JD: 2 (this whole block) */
 	width: 200px;
 	height: 200px;
 	top: 520px;

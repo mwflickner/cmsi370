@@ -21,26 +21,26 @@ var BoxesTouch = {
             });
     },
     
-    setupDragState: function (){
+    setupDragState: function (){ // JD: 5
         $(".drawing-area .box")
             .unbind("touchmove")
             .unbind("touchend")
     },
     
     
-    startDraw: function (event){
+    startDraw: function (event){ // JD: 5
         //console.log(event);
-            $.each(event.changedTouches, function (index, touch){
-                if(!touch.target.movingBox){
+            $.each(event.changedTouches, function (index, touch){ // JD: 5, 6
+                if(!touch.target.movingBox){ // JD: 5
                     console.log("START!", touch);
                     this.anchorX = touch.pageX;
                     this.anchorY = touch.pageY;
                     this.drawingBox = $("<div></div>")
-                    this.drawingBox
+                    this.drawingBox // JD: 7
                        .appendTo($(".drawing-area"))
                        .addClass("box")
-                       .offset({left: this.anchorX, top: this.anchorY});
-                    $("#drawing-area").find("div.box").each(function (index, element){
+                       .offset({left: this.anchorX, top: this.anchorY}); // JD: 5
+                    $("#drawing-area").find("div.box").each(function (index, element){ // JD: 5
                         element.addEventListener("touchstart", BoxesTouch.startMove, false);
                         element.addEventListener("touchend", BoxesTouch.unhighlight, false);
                     });
@@ -60,25 +60,25 @@ var BoxesTouch = {
         $.each(event.changedTouches, function (index, touch) {
                
             console.log("MOVE!", touch);
-            if (this.drawingBox){
+            if (this.drawingBox){ // JD: 5
                var newOffset = {
                    left: (this.anchorX < event.pageX) ? this.anchorX : event.pageX,
                    top: (this.anchorY < event.pageY) ? this.anchorY : event.pageY
                }
-               this.drawingBox
+               this.drawingBox // JD: 4
                    .offset(newOffset)
                    .width(Math.abs(event.pageX - this.anchorX))
                    .height(Math.abs(event.pageY - this.anchorY))
             }
             // Don't bother if we aren't tracking anything.
-            else if (touch.target.movingBox) {
+            else if (touch.target.movingBox) { // JD: 8
                 // Reposition the object.
-               
+                // JD: 8
                 touch.target.movingBox.offset({
                     left: touch.pageX - touch.target.deltaX,
                     top: touch.pageY - touch.target.deltaY
                 });
-
+                // JD: 3
             }
         });
         
@@ -96,7 +96,7 @@ var BoxesTouch = {
                
                this.drawingBox = null;
             }
-            else if (touch.target.movingBox) {
+            else if (touch.target.movingBox) { // JD: 8
                 // Change state to "not-moving-anything" by clearing out
                 // touch.target.movingBox.
                var drawAreaLength = $(".drawing-area").width();
@@ -105,7 +105,9 @@ var BoxesTouch = {
                var touchedBoxHeight = $(touch.target).height();
                var xCoord = touch.pageX;
                var yCoord = touch.pageY;
+               // JD: 5
                if(xCoord > (drawAreaLength-touchedBoxLength/2)&& yCoord > (drawAreaHeight - touchedBoxHeight/2)){
+                    // JD: 9
                     //$(."box-highlight").css("box-shadow", "0px 0px 6px red");
                     $(touch.target).remove();
                }
@@ -120,7 +122,7 @@ var BoxesTouch = {
     /**
      * Indicates that an element is unhighlighted.
      */
-    highlight: function() {
+    highlight: function() { // JD: 5
         $(this).addClass("box-highlight");
     },
 
