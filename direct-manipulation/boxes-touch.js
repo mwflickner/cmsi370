@@ -21,35 +21,32 @@ var BoxesTouch = {
             });
     },
     
-    setupDragState: function (){ // JD: 5
+    setupDragState: function () { // JD: 5
         $(".drawing-area .box")
             .unbind("touchmove")
             .unbind("touchend")
     },
     
     
-    startDraw: function (event){ // JD: 5
-        //console.log(event);
-            $.each(event.changedTouches, function (index, touch){ // JD: 5, 6
-                if(!touch.target.movingBox){ // JD: 5
-                    console.log("START!", touch);
-                    this.anchorX = touch.pageX;
-                    this.anchorY = touch.pageY;
-                    this.drawingBox = $("<div></div>")
-                    this.drawingBox // JD: 7
-                       .appendTo($(".drawing-area"))
-                       .addClass("box")
-                       .offset({left: this.anchorX, top: this.anchorY}); // JD: 5
-                    $("#drawing-area").find("div.box").each(function (index, element){ // JD: 5
-                        element.addEventListener("touchstart", BoxesTouch.startMove, false);
-                        element.addEventListener("touchend", BoxesTouch.unhighlight, false);
-                    });
-                   BoxesTouch.setupDragState();
-                }
-                    
-                   
-            });
-        
+    startDraw: function (event) { // JD: 5
+        //wish i knew about this buggy start earlier and more time to fix
+        $.each(event.changedTouches, function (index, touch) { // JD: 5, 6
+            if(!touch.target.movingBox) { // JD: 5
+                console.log("START!", touch);
+                this.anchorX = touch.pageX;
+                this.anchorY = touch.pageY;
+                this.drawingBox = $("<div></div>")
+                this.drawingBox
+                    .appendTo($(".drawing-area"))
+                    .addClass("box")
+                    .offset({left: this.anchorX, top: this.anchorY}); // JD: 5
+                $("#drawing-area").find("div.box").each(function (index, element) { // JD: 5
+                    element.addEventListener("touchstart", BoxesTouch.startMove, false);
+                    element.addEventListener("touchend", BoxesTouch.unhighlight, false);
+                });
+               BoxesTouch.setupDragState();
+            }     
+        });  
     },
     
 
@@ -57,10 +54,9 @@ var BoxesTouch = {
      * Tracks a box as it is rubberbanded or moved across the drawing area.
      */
     trackDrag: function (event) {
-        $.each(event.changedTouches, function (index, touch) {
-               
+        $.each(event.changedTouches, function (index, touch) {     
             console.log("MOVE!", touch);
-            if (this.drawingBox){ // JD: 5
+            if (this.drawingBox) { // JD: 5
                var newOffset = {
                    left: (this.anchorX < event.pageX) ? this.anchorX : event.pageX,
                    top: (this.anchorY < event.pageY) ? this.anchorY : event.pageY
@@ -76,9 +72,19 @@ var BoxesTouch = {
                 // JD: 8
                 touch.target.movingBox.offset({
                     left: touch.pageX - touch.target.deltaX,
-                    top: touch.pageY - touch.target.deltaY
+                    top: touch.pageY - touch.target.deltaY    
                 });
                 // JD: 3
+                var drawAreaLength = $(".drawing-area").width();
+                var drawAreaHeight = $(".drawing-area").height();
+                var touchedBoxLength = $(touch.target).width();
+                var touchedBoxHeight = $(touch.target).height();
+                if(touch.pageX > (drawAreaLength-touchedBoxLength/2)&& touch.pageY > (drawAreaHeight - touchedBoxHeight/2)) {
+                    $(".box-highlight").css("box-shadow", "0px 0px 6px red"); 
+                }
+                if(touch.pageX < (drawAreaLength-touchedBoxLength/2)|| touch.pageY < (drawAreaHeight - touchedBoxHeight/2)) {
+                    $(".box-highlight").css("box-shadow", "0px 0px 6px #88F"); 
+                }
             }
         });
         
@@ -99,18 +105,17 @@ var BoxesTouch = {
             else if (touch.target.movingBox) { // JD: 8
                 // Change state to "not-moving-anything" by clearing out
                 // touch.target.movingBox.
-               var drawAreaLength = $(".drawing-area").width();
-               var drawAreaHeight = $(".drawing-area").height();
-               var touchedBoxLength = $(touch.target).width();
-               var touchedBoxHeight = $(touch.target).height();
-               var xCoord = touch.pageX;
-               var yCoord = touch.pageY;
-               // JD: 5
-               if(xCoord > (drawAreaLength-touchedBoxLength/2)&& yCoord > (drawAreaHeight - touchedBoxHeight/2)){
+                $(".box").removeClass("box-highlight");
+                var drawAreaLength = $(".drawing-area").width();
+                var drawAreaHeight = $(".drawing-area").height();
+                var touchedBoxLength = $(touch.target).width();
+                var touchedBoxHeight = $(touch.target).height();
+                var xCoord = touch.pageX;
+                var yCoord = touch.pageY;
+                if(xCoord > (drawAreaLength-touchedBoxLength/2)&& yCoord > (drawAreaHeight - touchedBoxHeight/2)) {
                     // JD: 9
-                    //$(."box-highlight").css("box-shadow", "0px 0px 6px red");
                     $(touch.target).remove();
-               }
+                }
                 touch.target.movingBox = null;
                
             }
@@ -119,18 +124,7 @@ var BoxesTouch = {
         });
     },
 
-    /**
-     * Indicates that an element is unhighlighted.
-     */
-    highlight: function() { // JD: 5
-        $(this).addClass("box-highlight");
-    },
-
-
-    unhighlight: function () {
-        $(this).removeClass("box-highlight");
-    },
-
+    
     /**
      * Begins a box move sequence.
      */
