@@ -1,0 +1,13 @@
+*.class
+
+*.o
+
+*.gz
+
+*.log
+
+*.aux
+
+*.bbl
+
+*.blg

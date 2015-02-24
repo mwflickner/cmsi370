@@ -51,6 +51,7 @@
                     dPad.goDown();
                     break;  
             }
+            event.preventDefault();
         },
 
 
@@ -76,6 +77,7 @@
                     $("#down").removeClass("button-highlight");
                     break;  
             }
+
         },
 
 
