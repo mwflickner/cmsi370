@@ -11,13 +11,12 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
     </head>
     
-    <body> <!-- JD: 7 -->
+    <body>
       <div class="container-fluid">
         <div class="page-header">
           <h3>
             <nav class="navbar navbar-default" role="navigation">
               <div class="container-fluid">
-              <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <!-- JD: 10 -->
                     <span class="sr-only">Toggle navigation</span>
@@ -28,8 +27,7 @@
                   <a class="navbar-brand" href="#">The Sweg Game</a>
                 </div>
 
-                        <!--Collect the nav links, forms, and other content for toggling-->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> <!-- JD: 10 -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav navbar-right">
                     <li>
                       <a href="#">
@@ -44,13 +42,12 @@
                       </a>
                     </li>     
                   </ul>
-                </div><!-- /.navbar-collapse -->
-              </div><!-- /.container-fluid -->
+                </div>
+              </div>
             </nav>
           </h3>
         </div>
         <div class="row">
-          <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
             <li class="active">
               <a href="#home" role="tab" data-toggle="tab">Home</a>
@@ -72,9 +69,9 @@
                 <div class="container-fluid">
                   <div class="row">
                     <div class="col-md-2">
-                      <button type="button" id ="playBut" class="btn btn-primary btn-md">Play <span class="glyphicon glyphicon-play"></span> <!-- JD: 7 -->
+                      <button type="button" id ="playBut" class="btn btn-primary btn-md">Play <span class="glyphicon glyphicon-play"></span>
                       </button>
-                    </div><!-- ends first column -->
+                    </div>
                     <div class="col-md-8">
                       <div class="jumbotron">
                         <div class="container-fluid">
@@ -83,7 +80,7 @@
                       </div>
                     </div>
                     <div class="col-md-2" id="items">
-                      <button type ="button" id ="itemSpawn" class="btn btn-info btn-sm">Item Spawn</button> <!-- JD: 7 -->
+                      <button type ="button" id ="itemSpawn" class="btn btn-info btn-sm">Item Spawn</button>
                       <p id = "itemCreated">Sweg!</p>                
                     </div>
                   </div>
@@ -95,8 +92,8 @@
               <div class="tab-pane" id="profile">
                 <div class="jumbotron">
                   <div class="container-fluid">
-                    <div class="row"><!--row of character buttons -->
-                      <div class="col-md-2"><!--begins load character button column -->
+                    <div class="row">
+                      <div class="col-md-2">
                         <button type="button" class="btn btn-default btn-xs" id="getChars">Refresh List <!-- JD: 7 -->
                           <span class="glyphicon glyphicon-user"></span>
                         </button>
@@ -104,10 +101,10 @@
                           <span class="glyphicon glyphicon-plus"></span>
                         </button>
                       </div>
-                    </div><!-- ends row of buttons -->
+                    </div>
 
                     <div class="row">
-                      <div class="col-md-4"><!--column that has table of characters -->
+                      <div class="col-md-4">
                           <h4>Characters</h4>
                             <div class="characterTable">
                               <table class="table table-striped table-bordered table-hover table-condensed">
@@ -124,7 +121,7 @@
                             </div>
                           </div>
 
-                          <div class="col-md-4"><!--column of the gameplay screen -->
+                          <div class="col-md-4">
                             <h4 class="charViewer">Character Viewer</h4>
                             <div class="container-fluid">
                               <div class="charView">
@@ -132,16 +129,16 @@
                                 </img>
                               </div>
                             </div>
-                          </div><!--ends column of gameplay screen -->
+                          </div>
 
                           <div class="col-md-3">
                             <h4 class="charViewer">Character:</h4>
-                              <div class="container-fluid"> <!-- JD: 12 -->
+                              <div class="container-fluid">
                                 <div class="viewCharTable">
                                   <table class="table table-bordered">
                                     <tbody id="char1">
                                       <tr id="1" class="tRow vertical-target">
-                                        <td class="labelColumn">Name:</td> <!-- JD: 12 -->
+                                        <td class="labelColumn">Name:</td>
                                         <td id="viewCharName"></td>
                                       </tr>
                                       <tr id="2" class="tRow">
@@ -167,7 +164,7 @@
                                 </div>
                               </div>
                             </div>     
-                          </div><!--ends row of table and screen -->
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -238,10 +235,10 @@
                         </div>
                       </div>
                     </div>
-                </section><!-- ends row -->
+                </section>
 
 
-                <div class="row"><!-- row that holds modals -->
+                <div class="row">
 
                   <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
                     <div class="modal-dialog">
@@ -251,8 +248,8 @@
                             <span class="sr-only">Close
                             </span>
                           </button>
-                          <h4 class="modal-title" id="loginModal">Login to Sweg</h4> <!-- JD: 10 -->
-                        </div><!--end modal-header -->
+                          <h4 class="modal-title" id="loginModal">Login to Sweg</h4> 
+                        </div>
                         <div class="modal-body">
                           <form role="form">
                             <div class="form-group">
@@ -260,28 +257,28 @@
                                 <input type="email" class="form-control" id="loginEmail" placeholder="Enter email">
                                   <span id="loginSpan">
                                   </span>
-                            </div><!-- ends form group -->
+                            </div>
                             <div class="form-group">
                               <label for="loginPassword">Password</label>
                               <input type="password" class="form-control" id="loginPassword" placeholder="Password">
-                            </div><!--ends form group -->
+                            </div>
                               <section class="container-fluid">
                                 <div class="row">
                                   <div class="col-md-2 col-md-offset-4">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                 </div>
                                 <div class="col-md-2">
-                                  <button type="submit" id="loginM" class="btn btn-success" data-dismiss="modal">Login</button> <!-- JD: 7 -->
+                                  <button type="submit" id="loginM" class="btn btn-success" data-dismiss="modal">Login</button>
                                 </div>
                               </div>
                             </section>
-                          </div><!-- ends form -->
-                        </div><!-- end modal body -->
+                          </div>
+                        </div>
                         <div class="modal-footer">
-                        </div><!-- end modal footer -->
-                      </div><!-- end modal content -->
-                    </div><!-- end modal dialogue -->
-                  </div><!-- end modal -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
                   <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="createAccountModal" aria-hidden="true">
                     <div class="modal-dialog">
@@ -291,39 +288,38 @@
                             <span aria-hidden="true">&times;</span>
                             <span class="sr-only">Close</span>
                           </button>
-                          <h4 class="modal-title" id="createAccountModal">Create Account</h4> <!-- JD: 10, 13 -->
-                        </div><!--end modal-header -->
+                          <h4 class="modal-title" id="createAccountModal">Create Account</h4>
+                        </div>
                         <div class="modal-body">
                           <form role="form">
                             <div class="form-group">
                               <label for="inputEmail">Email address</label>
                                 <input type="email" class="form-control" id="inputEmail" placeholder="Enter email">
-                            </div><!-- ends form group -->
+                            </div>
                             <div class="form-group">
                               <label for="inputPassword">Password</label>
                               <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                            </div><!--ends form group -->
+                            </div>
                             <section class="container-fluid">
                               <div class="row">
                                 <div class="col-md-2 col-md-offset-4">
                                   <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
                                   </button>
-                                </div><!--ends column -->
+                                </div>
                                 <div class="col-md-2">
-                                  <button type="submit" id = "signUpM" class="btn btn-success" data-dismiss="modal">Sign Up! <!-- JD: 7 -->
+                                  <button type="submit" id = "signUpM" class="btn btn-success" data-dismiss="modal">Sign Up!
                                   </button>
-                                </div><!-- ends column-->
-                              </div><!--ends row -->
+                                </div>
+                              </div>
                             </section>
-                          </div><!-- ends form -->     
-                        </div><!-- end modal body -->
+                          </div>   
+                        </div>
                         <div class="modal-footer">
-                        </div><!-- end modal footer -->
-                      </div><!-- end modal content -->
-                    </div><!-- end modal dialogue -->
-                  </div><!-- end modal -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
-                  <!--Modal to Create a Character-->
                   <div class="modal fade" id="createCharModal" tabindex="-1" role="dialog" aria-labelledby="createCharLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
@@ -333,8 +329,8 @@
                             <span class="sr-only">Close
                             </span>
                           </button>
-                          <h4 class="modal-title" id="createCharLabel">Create a Character</h4> <!-- JD: 10, 13 -->
-                        </div><!--end modal-header -->
+                          <h4 class="modal-title" id="createCharLabel">Create a Character</h4>
+                        </div>
                         <div class="modal-body">
                           <form role="form">
                             <div class="form-group">
@@ -365,20 +361,19 @@
                                   </button>
                                 </div>
                                 <div class="col-md-2">
-                                  <button type="submit" id ="createCharButton" class="btn btn-primary btn-md" data-dismiss="modal">Create! <span class="glyphicon glyphicon-ok-circle"></span> <!-- JD: 7 -->
+                                  <button type="submit" id ="createCharButton" class="btn btn-primary btn-md" data-dismiss="modal">Create! <span class="glyphicon glyphicon-ok-circle"></span>
                                   </button>
                                 </div>
                               </div>
                             </section>
-                          </div><!-- ends form -->       
-                        </div><!-- end modal body -->
+                          </div>      
+                        </div>
                         <div class="modal-footer">
-                        </div><!-- end modal footer -->
-                      </div><!-- end modal content -->
-                    </div><!-- end modal dialogue -->
-                  </div><!-- end modal -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
-                  <!--Modal to Edit Character--> <!-- JD: 14 -->
                   <div class="modal fade" id="editCharModal" tabindex="-1" role="dialog" aria-labelledby="editCharLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
@@ -387,8 +382,8 @@
                             <span aria-hidden="true">&times;</span>
                             <span class="sr-only">Close</span>
                           </button>
-                          <h4 class="modal-title" id="editCharLabel">Edit Character</h4> <!-- JD: 10, 13 -->
-                        </div><!--end modal-header -->
+                          <h4 class="modal-title" id="editCharLabel">Edit Character</h4>
+                        </div>
                         <div class="modal-body">
                           <p>Enter new information for your character.</p>
                           <form role="form">
@@ -419,26 +414,25 @@
                                   </button>
                                 </div>
                                 <div class="col-md-2">
-                                  <button type="submit" id="editCharSave" class="btn btn-primary btn-md" data-dismiss="modal">Save <!-- JD: 7 -->
+                                  <button type="submit" id="editCharSave" class="btn btn-primary btn-md" data-dismiss="modal">Save
                                     <span class="glyphicon glyphicon-save"></span>
                                   </button>
                                 </div>
                               </div>
                             </section>
-                          </div><!-- ends form --> <!-- JD: Incorrect closing tag -->
-                        </div><!-- end modal body -->
+                          </div>
+                        </div>
                       <div class="modal-footer">
-                      </div><!-- end modal footer -->
-                    </div><!-- end modal content -->
-                  </div><!-- end modal dialogue -->
-                </div><!-- end modal -->
-              </div><!--ends row -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
 
-        <script src="theGameScript.js"></script> <!-- JD: 15 -->
+        <script src="theGameScript.js"></script>
         <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
-        <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script>
           $(function () {

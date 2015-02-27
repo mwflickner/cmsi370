@@ -15,7 +15,7 @@ var theGame = function (jQueryElements){
         $("#loginM").click(function () {
             $("#topMenuLogin").text("Logout");
             $("#topMenuCreate").hide();
-            $("#topMenuLogin").attr({// JD: 7 (this is still equivalent to doing this in HTML)
+            $("#topMenuLogin").attr({
                     "data-toggle": ""
             });
             loggedIn = true;
@@ -24,9 +24,9 @@ var theGame = function (jQueryElements){
         //create account succesful
         $("#signUpM").click(function () {
             $("#topMenuCreate").hide();
-            $("#topMenuLogin").text("Logout"); // JD: 19
-            $("#topMenuLogin").attr({// JD: 7
-                    "data-toggle": "" // JD: 8
+            $("#topMenuLogin").text("Logout");
+            $("#topMenuLogin").attr({
+                    "data-toggle": ""
             });
             loggedIn = true;
         });
@@ -36,7 +36,7 @@ var theGame = function (jQueryElements){
             $("#topMenuLogin").click(function () {
                 $("#topMenuLogin").text("Login");
                 $("#topMenuLogin").attr({
-                    "data-toggle": "modal" // JD: 8
+                    "data-toggle": "modal"
                 });
                 $("#topMenuCreate").show();
             });
@@ -65,7 +65,6 @@ var theGame = function (jQueryElements){
                         .append($("<td></td>").text(character.classType))
                         .append($("<td></td>").text(character.gender))
                         .append($("<td></td>").text(character.level))
-                         // JD: 7 ....instead, assign actual functions
                         .append($("<td></td>").html("<button type='button' id='v"+(character.id)+"' class='characterView btn btn-primary btn-xs'>View</button>"))
                         .append($("<td></td>").html("<button type='button' id='d"+(character.id)+"' class='characterDelete btn btn-danger btn-xs'>Delete</button>"));
                 }));
@@ -77,7 +76,7 @@ var theGame = function (jQueryElements){
             var buttonID = this.id;
             var charID = buttonID.substring(1, (buttonID.length));
             $.getJSON(
-                "http://lmu-diabolical.appspot.com/characters/" + charID,// JD: 21
+                "http://lmu-diabolical.appspot.com/characters/" + charID,
 
             function (character) {
                 // JD: 22
@@ -104,7 +103,7 @@ var theGame = function (jQueryElements){
                 $.ajax({
                     type: 'PUT',
                     async: false,
-                    url: "http://lmu-diabolical.appspot.com/characters/" + tempID + "", // JD: 21
+                    url: "http://lmu-diabolical.appspot.com/characters/" + tempID + "",
                     data: JSON.stringify({
                         id: tempID,
                         name: charName,
@@ -116,7 +115,7 @@ var theGame = function (jQueryElements){
                     contentType: "application/json",
                     dataType: "json",
                     accept: "application/json",
-                    success: function (data, textStatus, jqXHR) { // JD: 3
+                    success: function (data, textStatus, jqXHR) {
                         console.log("Done: no news is good news.");
                         //function());
                     }
@@ -155,7 +154,6 @@ var theGame = function (jQueryElements){
                 dataType: "json",
                 accept: "application/json",
                 complete: function (jqXHR, textStatus) {
-                    // The new character can be accessed from the Location header.
                     console.log("You may access the new character at:" + jqXHR.getResponseHeader("Location"));
                     charLocation = jqXHR.getResponseHeader("Location");
                 }
@@ -171,8 +169,8 @@ var theGame = function (jQueryElements){
                 $.ajax({
                     type: 'DELETE',
                     async: false,
-                    url: "http://lmu-diabolical.appspot.com/characters/" + charID, // JD: 21
-                    success: function (data, textStatus, jqXHR) { // JD: 3
+                    url: "http://lmu-diabolical.appspot.com/characters/" + charID,
+                    success: function (data, textStatus, jqXHR) {
                         console.log("Gone baby gone.");
                     }
                 });
@@ -208,10 +206,4 @@ var theGame = function (jQueryElements){
             $("#itemCreated").hide();
         });
 
-
-    
-    
-
-
-  
 }
